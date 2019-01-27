@@ -1,15 +1,26 @@
 # Financial Control App
 
-### Installing
+### Pre requisites:
 
-```bash
-$ npm i
-```
+- [Docker](https://docs.docker.com/install/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Usage
+
+- Build:
+
+```bash
+$ docker-compose up -d --build
+```
 
 - Setup:
 
 ```bash
-$ docker container run -p 8090:8090 --name node-app --rm fecaps/node_financial_control_app:latest
+$ docker-compose up -d
+```
+
+- Stop:
+
+```bash
+$ docker-compose down
 ```
