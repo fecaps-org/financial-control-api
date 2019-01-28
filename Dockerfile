@@ -4,7 +4,7 @@ ENV NODE_ENV=production
 
 WORKDIR /src
 
-COPY ./package* ./
+COPY ./package*.json ./
 
 RUN apk add --update \
     && npm i npm@latest -g \
