@@ -7,7 +7,7 @@
 
 ### Usage
 
-- Build:
+- Building:
 
 ```bash
 $ docker-compose up -d --build
