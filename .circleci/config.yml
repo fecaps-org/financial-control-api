@@ -9,22 +9,18 @@ jobs:
                 command: |
                     docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
             - run:
-                name: Docker Image Build
+                name: Docker Image Build - Web Api
                 command: |
                     if [ "${CIRCLE_BRANCH}" == "development" ]; then
-                        docker build -f api/env/Dockerfile.dev -t $DOCKER_IMAGE:development .
-                    elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                        docker build -t $DOCKER_IMAGE:staging .
+                        docker build -f api/env/Dockerfile.dev -t fecaps/financial_control_webapi:development .
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                        docker build -f api/env/Dockerfile -t $DOCKER_IMAGE:production .
+                        docker build -f api/env/Dockerfile -t fecaps/financial_control_webapi:production .
                     fi
             - run:
-                name: Docker Hub Deploy
+                name: Docker Hub Deploy - Web Api
                 command: |
                     if [ "${CIRCLE_BRANCH}" == "development" ]; then
-                        docker push $DOCKER_IMAGE:development
-                    elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                        docker push $DOCKER_IMAGE:staging
+                        docker push fecaps/financial_control_webapi:development
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                        docker push $DOCKER_IMAGE:production
+                        docker push fecaps/financial_control_webapi:production
                     fi

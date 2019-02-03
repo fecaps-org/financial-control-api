@@ -2,12 +2,15 @@ version: '3'
 
 services:
   postgres:
+    container_name: financial_control_postgres
     image: postgres:10
 
   redis:
+    container_name: financial_control_redis
     image: redis:4
 
-  node:
+  webapi:
+    container_name: financial_control_webapi
     build:
       context: ./api
       dockerfile: ./env/Dockerfile.dev
