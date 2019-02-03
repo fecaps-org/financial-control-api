@@ -1,30 +1,30 @@
 version: 2
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+    machine: true
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+        name: Docker Hub Login
+        command: |
+          docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+      - run:
+          name: Docker Image Build
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "development" ]; then
+                docker build -t $DOCKER_IMAGE:development .
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                docker build -t $DOCKER_IMAGE:staging .
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                docker build -t $DOCKER_IMAGE:latest .
+            fi
+      - run:
+          name: Docker Hub Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "development" ]; then
+                docker push $DOCKER_IMAGE:development
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                docker push $DOCKER_IMAGE:staging
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                docker push $DOCKER_IMAGE:latest
+            fi
