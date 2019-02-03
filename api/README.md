@@ -13,3 +13,9 @@ $ docker build -f env/Dockerfile.{{env} . -t financial_control_api
 ```bash
 $ docker run financial_control_api
 ```
+
+- For entering the container:
+
+```bash
+$ docker container exec -it financial-control_node_1 /bin/sh
+```

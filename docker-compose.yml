@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:10
+
+  redis:
+    image: redis:4
+
+  node:
+    build:
+      context: ./api
+      dockerfile: ./env/Dockerfile.dev
+    ports:
+      - 8090:8090
+    volumes:
+      - /src/node_modules
+      - ./api:/src
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT:  6379
+      PGUSER: postgres
+      PGHOST: postgres
+      PGDATABASE: postgres
+      PGPASSWORD: postgres
+      PGPORT: 5432
+    restart: always
