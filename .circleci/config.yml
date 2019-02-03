@@ -1,30 +1,30 @@
 version: 2
 jobs:
-  build:
-    machine: true
-    steps:
-      - checkout
-      - run:
-        name: Docker Hub Login
-        command: |
-          docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
-      - run:
-          name: Docker Image Build
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "development" ]; then
-                docker build -t $DOCKER_IMAGE:development .
-            elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                docker build -t $DOCKER_IMAGE:staging .
-            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                docker build -t $DOCKER_IMAGE:latest .
-            fi
-      - run:
-          name: Docker Hub Deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "development" ]; then
-                docker push $DOCKER_IMAGE:development
-            elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                docker push $DOCKER_IMAGE:staging
-            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                docker push $DOCKER_IMAGE:latest
-            fi
+    build:
+        machine: true
+        steps:
+            - checkout
+            - run:
+                name: Docker Hub Login
+                command: |
+                    docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+            - run:
+                name: Docker Image Build
+                command: |
+                    if [ "${CIRCLE_BRANCH}" == "development" ]; then
+                        docker build -t $DOCKER_IMAGE:development .
+                    elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                        docker build -t $DOCKER_IMAGE:staging .
+                    elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                        docker build -t $DOCKER_IMAGE:latest .
+                    fi
+            - run:
+                name: Docker Hub Deploy
+                command: |
+                    if [ "${CIRCLE_BRANCH}" == "development" ]; then
+                        docker push $DOCKER_IMAGE:development
+                    elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                        docker push $DOCKER_IMAGE:staging
+                    elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                        docker push $DOCKER_IMAGE:latest
+                    fi
