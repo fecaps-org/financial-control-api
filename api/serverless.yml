@@ -31,3 +31,19 @@ functions:
          method: get
     environment:
       expenses_categories_table: ${env:EXPENSES_CATEGORIES_TABLE}
+
+resources:
+  Resources:
+    expensesCategoriesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: expenses_categories
+        AttributeDefinitions:
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: name
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

@@ -7,10 +7,16 @@
 
 ### Setup
 
-Copy environment variables and edit them based on your AWS Account data:
+- Copy environment variables and edit them based on your AWS Account data:
 
 ```bash
 $ cd api && cp .env.dist .env
+```
+
+- Running seeders:
+
+```bash
+$ node seeders
 ```
 
 ### Usage
@@ -20,3 +26,7 @@ $ cd api && cp .env.dist .env
 ```bash
 $ cd api && sls deploy
 ```
+
+### Resources
+
+- AWS DynamoDB

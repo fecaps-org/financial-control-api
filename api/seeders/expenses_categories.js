@@ -3,35 +3,50 @@
 const AWS = require('aws-sdk')
 AWS.config.region = 'us-east-1'
 
-const dynamodb = new AWS.DynamoDB.DocumentClient()
+const dynamoDb = new AWS.DynamoDB.DocumentClient()
+const EXPENSES_CATEGORIES_TABLE = process.env.EXPENSES_CATEGORIES_TABLE ||
+  'expenses_categories'
 
-const expensesCategories = [
-  {
-    name: 'transportation',
-    description: 'Public transport, cars, etc'
-  },
-  {
-    name: 'education',
-    description: 'Courses, trainings, books, etc'
-  },
-  {
-    name: 'food',
-    description: 'Restaurants, dining, food, etc'
-  },
-  {
-    name: 'other',
-    description: 'Bank, Online purchases, Taxes, etc'
+module.exports.seedExpensesCategories = () => {
+  const expensesCategories = [
+    {
+      name: 'transportation',
+      description: 'Public transport, cars, etc'
+    },
+    {
+      name: 'education',
+      description: 'Courses, trainings, books, etc'
+    },
+    {
+      name: 'food',
+      description: 'Restaurants, dining, food, etc'
+    },
+    {
+      name: 'other',
+      description: 'Bank, Online purchases, Taxes, etc'
+    }
+  ]
+
+  const putExpensesCategoriesRecords = expensesCategories.map(item => ({
+    PutRequest: { Item: item }
+  }))
+
+  const records = {
+    RequestItems: {
+      [EXPENSES_CATEGORIES_TABLE]: putExpensesCategoriesRecords
+    }
   }
-]
 
-const putExpensesCategoriesRecords = expensesCategories.map(x => ({
-  PutRequest: { Item: x }
-}))
+  return new Promise((resolve, reject) => {
+    dynamoDb.batchWrite(records, (err, data) => {
+      if (err) {
+        console.error('Seed - Expenses Categories didn\'t work:', err)
+        return reject()
+      }
 
-const records = { RequestItems: {
-  expenses_categories: putExpensesCategoriesRecords
-  } }
-
-dynamodb.batchWrite(records)
-  .then(() => console.log('Seed - Expenses Categories: Finished!'))
-  .catch(err => console.error('Seed - Expenses Categories didn\'t work:', err))
+      console.log('Seed - Expenses Categories: Finished!')
+      console.log(data)
+      resolve()
+    })
+  })
+}

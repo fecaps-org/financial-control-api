@@ -11,3 +11,6 @@ coverage
 
 # env variables
 api/.env
+
+# phpstorm
+.idea

@@ -1,25 +1,13 @@
 'use strict';
 
 const { transform } = require('../../transformers')
+const { getCategories } = require('./categories')
 
-module.exports.handler = async () => ({
-  statusCode: 200,
-  body: transform([
-    {
-      name: 'transportation',
-      description: 'Public transport, cars, etc'
-    },
-    {
-      name: 'education',
-      description: 'Courses, trainings, books, etc'
-    },
-    {
-      name: 'food',
-      description: 'Restaurants, dining, food, etc'
-    },
-    {
-      name: 'other',
-      description: 'Bank, Online purchases, Taxes, etc'
-    }
-  ])
-})
+module.exports.handler = async () => {
+  const categories = await getCategories()
+
+  return {
+    statusCode: 200,
+    body: transform(categories)
+  }
+}
