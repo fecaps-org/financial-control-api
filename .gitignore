@@ -8,3 +8,6 @@ jspm_packages
 # nyc coverage
 .nyc_output
 coverage
+
+# env variables
+api/.env

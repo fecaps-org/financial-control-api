@@ -1,10 +1,17 @@
-service: financialControlApi
+service: ${env:SERVICE}
 
 provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
   region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action: dynamodb:scan
+      Resource: arn:aws:dynamodb:${env:REGION}:${env:ACCOUNT_ID}:table/${env:EXPENSES_CATEGORIES_TABLE}
+
+plugins:
+  - serverless-dotenv-plugin
 
 functions:
   get-expenses:
@@ -16,9 +23,11 @@ functions:
          method: get
 
   get-categories:
-    handler: handlers/get-categories.handler
+    handler: handlers/get-expenses-categories.handler
     description: Financial Control API - Get All Categories
     events:
       - http:
          path: categories
          method: get
+    environment:
+      expenses_categories_table: ${env:EXPENSES_CATEGORIES_TABLE}

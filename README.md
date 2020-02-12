@@ -2,25 +2,21 @@
 
 ### Pre requisites:
 
-- [Docker](https://docs.docker.com/install/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Installing AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+- [Installing Serverless](https://serverless.com/framework/docs/getting-started/)
+
+### Setup
+
+Copy environment variables and edit them based on your AWS Account data:
+
+```bash
+$ cd api && cp .env.dist .env
+```
 
 ### Usage
 
-- Building:
+- Deploying WebAPI:
 
 ```bash
-$ docker-compose up -d --build
-```
-
-- Setup:
-
-```bash
-$ docker-compose up -d
-```
-
-- Stop:
-
-```bash
-$ docker-compose down
+$ cd api && sls deploy
 ```
