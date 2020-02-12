@@ -1,0 +1,24 @@
+service: financialControlApi
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  get-expenses:
+    handler: handlers/get-expenses.handler
+    description: Financial Control API - Get All Expenses
+    events:
+      - http:
+         path: expenses
+         method: get
+
+  get-categories:
+    handler: handlers/get-categories.handler
+    description: Financial Control API - Get All Categories
+    events:
+      - http:
+         path: categories
+         method: get
