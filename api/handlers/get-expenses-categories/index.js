@@ -1,6 +1,6 @@
 'use strict';
 
-const { transform } = require('../../transformer')
+const { transform } = require('../../transformers')
 
 module.exports.handler = async () => ({
   statusCode: 200,
