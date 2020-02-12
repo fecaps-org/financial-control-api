@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/fecaps/financial-control#readme",
   "devDependencies": {
-    "aws-sdk": "^2.616.0"
+    "aws-sdk": "^2.616.0",
+    "serverless-dotenv-plugin": "^2.3.2"
   }
 }
