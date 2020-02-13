@@ -5,8 +5,8 @@ provider:
   runtime: nodejs12.x
   stage: ${env:STAGE}
   region: ${env:REGION}
-  apiKeys:
-    - ${env:STAGE}-${env:SERVICE}Key
+#  apiKeys:
+#    - ${env:STAGE}-${env:SERVICE}Key
   usagePlan:
     quota:
       limit: ${env:QUOTA_LIMIT}
@@ -39,7 +39,6 @@ functions:
       - http:
          path: categories
          method: get
-         private: true
 
 resources:
   Resources:

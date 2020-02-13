@@ -1,7 +1,9 @@
 'use strict'
 
+// eslint-disable-next-line node/no-unpublished-require
 const AWS = require('aws-sdk')
-AWS.config.region = 'us-east-1'
+const { AWS_REGION } = require('../defaults')
+AWS.config.region = AWS_REGION
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient()
 const { EXPENSES_CATEGORIES_TABLE } = require('../defaults')
@@ -40,12 +42,12 @@ module.exports.seedExpensesCategories = () => {
     dynamoDb.batchWrite(records, (err, data) => {
       if (err) {
         console.error('Seed - Expenses Categories didn\'t work:', err)
-        return reject()
+        return reject(err)
       }
 
       console.log('Seed - Expenses Categories: Finished!')
       console.log(data)
-      resolve()
+      resolve(data)
     })
   })
 }

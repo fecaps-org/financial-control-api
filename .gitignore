@@ -1,16 +1,12 @@
-# package directories
+# full project
+package-lock.json
 node_modules
-jspm_packages
 
-# Serverless directories
-.serverless
-
-# nyc coverage
-.nyc_output
-coverage
-
-# env variables
+# Api
 api/.env
+api/node_modules
+api/jspm_packages
+api/.serverless
 
-# phpstorm
+# IDE
 .idea

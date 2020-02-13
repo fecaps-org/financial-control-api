@@ -7,24 +7,42 @@
 
 ### Setup
 
-- Copy environment variables and edit them based on your AWS Account data:
+- Install full project dependencies:
 
 ```bash
-$ cd api && cp .env.dist .env
+$ npm i
 ```
 
-- Running seeders:
+- Copy Web API environment variables and edit them based on your AWS Account data:
 
 ```bash
-$ cd api && node seeders
+$ npm run generateApiEnvFile
+```
+
+- Installing Web API dependencies:
+
+```bash
+$ npm run installApiDependencies
+```
+
+- Running Web API seeders:
+
+```bash
+$ npm run runApiSeeders
 ```
 
 ### Usage
 
-- Deploying WebAPI:
+- Deploying Web API:
 
 ```bash
-$ cd api && sls deploy
+$ npm run buildApi
+```
+
+- Fix Web API style:
+
+```bash
+$ npm run fixApiStyle
 ```
 
 ### Resources

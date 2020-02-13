@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const { transform } = require('../../transformers')
 const { getCategories } = require('./categories')

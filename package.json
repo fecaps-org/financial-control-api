@@ -1,0 +1,30 @@
+{
+    "name": "financial_control",
+    "version": "1.0.0",
+    "description": "Financial Control Full Project",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fecaps/financial-control.git"
+    },
+    "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
+    "license": "ISC",
+    "scripts": {
+        "generateApiEnvFile": "cd api && cp .env.dist .env && cd ..",
+        "installApiDependencies": "cd api && npm i && cd ..",
+        "runApiSeeders": "cd api && node seeders && cd ..",
+        "buildApi": "cd api && npm run build && cd ..",
+        "fixApiStyle": "cd api && npm run fixStyle && cd .."
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run fixApiStyle"
+        }
+    },
+    "bugs": {
+        "url": "https://github.com/fecaps/financial-control/issues"
+    },
+    "homepage": "https://github.com/fecaps/financial-control#readme",
+    "devDependencies": {
+        "husky": "^4.2.3"
+    }
+}

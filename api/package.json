@@ -2,19 +2,34 @@
   "name": "financial_control_api",
   "version": "1.0.0",
   "description": "Financial Control API",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fecaps/financial-control.git"
   },
-  "author": "",
+  "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
   "license": "ISC",
+  "scripts": {
+    "build": "sls deploy",
+    "fixStyle": "./node_modules/eslint/bin/eslint.js ./ --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./node_modules/eslint/bin/eslint.js ./"
+    }
+  },
   "bugs": {
     "url": "https://github.com/fecaps/financial-control/issues"
   },
   "homepage": "https://github.com/fecaps/financial-control#readme",
   "devDependencies": {
     "aws-sdk": "^2.616.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.3",
     "serverless-dotenv-plugin": "^2.3.2"
   }
 }

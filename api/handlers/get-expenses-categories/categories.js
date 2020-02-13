@@ -1,5 +1,6 @@
 'use strict'
 
+// eslint-disable-next-line node/no-unpublished-require
 const AWS = require('aws-sdk')
 const dynamoDB = new AWS.DynamoDB.DocumentClient()
 const { EXPENSES_CATEGORIES_TABLE } = require('../../defaults')
