@@ -2,7 +2,7 @@
 
 const AWS = require('aws-sdk')
 const dynamoDB = new AWS.DynamoDB.DocumentClient()
-const EXPENSES_CATEGORIES_TABLE = process.env.expenses_categories_table
+const { EXPENSES_CATEGORIES_TABLE } = require('../../defaults')
 
 module.exports.getCategories = () => new Promise(resolve => {
   const categoriesRequest = {
@@ -10,10 +10,8 @@ module.exports.getCategories = () => new Promise(resolve => {
     Limit: 10
   }
 
-  dynamoDB.scan(categoriesRequest, (err, data) => {
-    if (err) {
-      return resolve([])
-    }
-    resolve(data.Items || [])
-  })
+  dynamoDB.scan(categoriesRequest, (err, data) => err
+    ? resolve([])
+    : resolve(data.Items || [])
+  )
 })

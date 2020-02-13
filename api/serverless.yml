@@ -29,8 +29,6 @@ functions:
       - http:
          path: categories
          method: get
-    environment:
-      expenses_categories_table: ${env:EXPENSES_CATEGORIES_TABLE}
 
 resources:
   Resources:

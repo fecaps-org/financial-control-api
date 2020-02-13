@@ -16,7 +16,7 @@ $ cd api && cp .env.dist .env
 - Running seeders:
 
 ```bash
-$ node seeders
+$ cd api && node seeders
 ```
 
 ### Usage

@@ -4,8 +4,7 @@ const AWS = require('aws-sdk')
 AWS.config.region = 'us-east-1'
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient()
-const EXPENSES_CATEGORIES_TABLE = process.env.EXPENSES_CATEGORIES_TABLE ||
-  'expenses_categories'
+const { EXPENSES_CATEGORIES_TABLE } = require('../defaults')
 
 module.exports.seedExpensesCategories = () => {
   const expensesCategories = [
