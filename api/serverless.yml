@@ -3,8 +3,18 @@ service: ${env:SERVICE}
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
-  region: us-east-1
+  stage: ${env:STAGE}
+  region: ${env:REGION}
+  apiKeys:
+    - ${env:STAGE}-${env:SERVICE}Key
+  usagePlan:
+    quota:
+      limit: ${env:QUOTA_LIMIT}
+      offset: ${env:QUOTA_OFFSET}
+      period: ${env:QUOTA_PERIOD}
+    throttle:
+      burstLimit: ${env:THROTTLE_BURST_LIMIT}
+      rateLimit: ${env:THROTTLE_RATE_LIMIT}
   iamRoleStatements:
     - Effect: Allow
       Action: dynamodb:scan
@@ -29,13 +39,14 @@ functions:
       - http:
          path: categories
          method: get
+         private: true
 
 resources:
   Resources:
     expensesCategoriesTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: expenses_categories
+        TableName: ${env:EXPENSES_CATEGORIES_TABLE}
         AttributeDefinitions:
           - AttributeName: name
             AttributeType: S
