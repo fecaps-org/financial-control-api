@@ -13,16 +13,18 @@
 $ npm i
 ```
 
+- Installing Web API dependencies:
+
+** <i>There's no need to run this command if the full project dependencies command was executed</i>
+
+```bash
+$ npm run installApiDependencies
+```
+
 - Copy Web API environment variables and edit them based on your AWS Account data:
 
 ```bash
 $ npm run generateApiEnvFile
-```
-
-- Installing Web API dependencies:
-
-```bash
-$ npm run installApiDependencies
 ```
 
 - Running Web API seeders:
@@ -43,6 +45,18 @@ $ npm run buildApi
 
 ```bash
 $ npm run fixApiStyle
+```
+
+- Run Web API tests without **Debugger**:
+
+```bash
+$ npm run runApiTests
+```
+
+- Run Web API tests with **Debugger**:
+
+```bash
+$ npm run runApiTests
 ```
 
 ### Resources

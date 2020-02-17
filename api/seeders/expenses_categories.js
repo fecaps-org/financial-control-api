@@ -1,6 +1,5 @@
 'use strict'
 
-// eslint-disable-next-line node/no-unpublished-require
 const AWS = require('aws-sdk')
 const { AWS_REGION } = require('../defaults')
 AWS.config.region = AWS_REGION

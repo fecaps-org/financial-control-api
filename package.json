@@ -9,15 +9,19 @@
     "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
     "license": "ISC",
     "scripts": {
-        "generateApiEnvFile": "cd api && cp .env.dist .env && cd ..",
+        "postinstall": "npm run installApiDependencies",
         "installApiDependencies": "cd api && npm i && cd ..",
+        "generateApiEnvFile": "cd api && cp .env.dist .env && cd ..",
         "runApiSeeders": "cd api && node seeders && cd ..",
         "buildApi": "cd api && npm run build && cd ..",
-        "fixApiStyle": "cd api && npm run fixStyle && cd .."
+        "checkApiStyle": "cd api && npm run checkStyle && cd ..",
+        "fixApiStyle": "cd api && npm run fixStyle && cd ..",
+        "runApiTests": "cd api && npm test && cd .."
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run fixApiStyle"
+            "pre-commit": "npm run checkApiStyle",
+            "pre-push": "npm run runApiTests"
         }
     },
     "bugs": {

@@ -8,14 +8,29 @@
   },
   "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
   "license": "ISC",
+  "files": [
+    "defaults.js",
+    "handlers",
+    "transformers"
+  ],
   "scripts": {
     "build": "sls deploy",
+    "test": "nyc --check-coverage --lines 100 --functions 100 --reporter=html --reporter=text mocha -S tests/*.test.js --exit --timeout 555555",
+    "test-debugger": "mocha --inspect-brk=9300 -S test/*.test.js --exit --timeout 0",
+    "checkStyle": "./node_modules/eslint/bin/eslint.js ./",
     "fixStyle": "./node_modules/eslint/bin/eslint.js ./ --fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "./node_modules/eslint/bin/eslint.js ./"
+      "pre-commit": "./node_modules/eslint/bin/eslint.js ./",
+      "pre-push": "npm test"
     }
+  },
+  "nyc": {
+    "exclude": [
+      "coverage",
+      "tests"
+    ]
   },
   "bugs": {
     "url": "https://github.com/fecaps/financial-control/issues"
@@ -23,6 +38,7 @@
   "homepage": "https://github.com/fecaps/financial-control#readme",
   "devDependencies": {
     "aws-sdk": "^2.616.0",
+    "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
@@ -30,6 +46,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.2.3",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
     "serverless-dotenv-plugin": "^2.3.2"
   }
 }
