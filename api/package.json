@@ -13,11 +13,12 @@
   ],
   "scripts": {
     "seed": "node src/seeders",
-    "build": "sls deploy",
+    "build": "./node_modules/.bin/sls deploy",
     "test": "nyc --check-coverage --lines 100 --functions 100 --reporter=html --reporter=text mocha -S tests/*.test.js --exit --timeout 555555",
     "test-debugger": "mocha --inspect-brk=9300 -S tests/*.test.js --exit --timeout 0",
     "checkStyle": "./node_modules/eslint/bin/eslint.js ./",
-    "fixStyle": "./node_modules/eslint/bin/eslint.js ./ --fix"
+    "fixStyle": "./node_modules/eslint/bin/eslint.js ./ --fix",
+    "invokeFunction": "./node_modules/.bin/sls invoke local -f $FUNCTION_NAME"
   },
   "husky": {
     "hooks": {
@@ -47,6 +48,7 @@
     "husky": "^4.2.3",
     "mocha": "^7.0.1",
     "nyc": "^15.0.0",
+    "serverless": "^1.63.0",
     "serverless-dotenv-plugin": "^2.3.2"
   }
 }

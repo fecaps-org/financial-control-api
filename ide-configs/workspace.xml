@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+    <component name="RunManager" selected="Node.js.get-expenses function">
+        <configuration name="financial control api" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" port="9300" restartOnDisconnect="true">
+            <method v="2" />
+        </configuration>
+        <configuration name="get-categories function" type="NodeJSConfigurationType" application-parameters="&quot;invoke&quot; &quot;local&quot; &quot;-f&quot; &quot;get-categories&quot; &quot;-d&quot; &quot;{}&quot;" path-to-js-file="node_modules/.bin/sls" working-dir="$PROJECT_DIR$/api">
+            <method v="2" />
+        </configuration>
+        <configuration name="get-expenses function" type="NodeJSConfigurationType" application-parameters="&quot;invoke&quot; &quot;local&quot; &quot;-f&quot; &quot;get-expenses&quot; &quot;-d&quot; &quot;{}&quot;" path-to-js-file="node_modules/.bin/sls" working-dir="$PROJECT_DIR$/api">
+            <method v="2" />
+        </configuration>
+        <list>
+            <item itemvalue="Attach to Node.js/Chrome.financial control api" />
+            <item itemvalue="Node.js.get-categories function" />
+            <item itemvalue="Node.js.get-expenses function" />
+        </list>
+    </component>
+</project>

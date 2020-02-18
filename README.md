@@ -3,7 +3,6 @@
 ### Pre requisites:
 
 - [Installing AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
-- [Installing Serverless](https://serverless.com/framework/docs/getting-started/)
 
 ### Setup
 
@@ -32,6 +31,18 @@ $ npm run generateApiEnvFile
 ```bash
 $ npm run runApiSeeders
 ```
+
+### Debug
+
+In order to start debugging the functions in any **IntelliJ IDE** follow the steps below:
+
+- Download `workspace.xml` file in the `ide-configs` directory
+
+- Copy and paste it to `{{intellijWorkspaceFolder}}/.idea` (or update your `.idea/workspace.xml` file)
+
+- Restart IDE
+
+- Check debugger configurations in the top right corner
 
 ### Usage
 
@@ -64,5 +75,5 @@ $ npm run runApiTestsDebugger
 - Run a function locally:
 
 ```bash
-$ FUNCTION_NAME=get-categories npm run invokeFunction
+$ FUNCTION_NAME=get-categories npm run invokeApiFunction
 ```

@@ -18,7 +18,7 @@
         "fixApiStyle": "cd api && npm run fixStyle && cd ..",
         "runApiTests": "cd api && npm test && cd ..",
         "runApiTestsDebugger": "cd api && npm run test-debugger && cd ..",
-        "invokeFunction": "cd api && serverless invoke local --function $FUNCTION_NAME"
+        "invokeApiFunction": "cd api && FUNCTION_NAME=$FUNCTION_NAME npm run invokeFunction && cd .."
     },
     "husky": {
         "hooks": {
