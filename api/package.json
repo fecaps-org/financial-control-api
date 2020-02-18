@@ -9,9 +9,9 @@
   "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
   "license": "ISC",
   "files": [
-    "defaults.js",
-    "handlers",
-    "transformers"
+    "src/defaults.js",
+    "src/handlers",
+    "src/transformers"
   ],
   "scripts": {
     "build": "sls deploy",

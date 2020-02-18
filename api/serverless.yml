@@ -25,7 +25,7 @@ plugins:
 
 functions:
   get-expenses:
-    handler: handlers/get-expenses.handler
+    handler: src/handlers/get-expenses.handler
     description: Financial Control API - Get All Expenses
     events:
       - http:
@@ -33,7 +33,7 @@ functions:
          method: get
 
   get-categories:
-    handler: handlers/get-expenses-categories.handler
+    handler: src/handlers/get-expenses-categories.handler
     description: Financial Control API - Get All Categories
     events:
       - http:

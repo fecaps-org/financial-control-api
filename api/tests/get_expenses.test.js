@@ -2,7 +2,7 @@
 /* eslint no-debugger: off */
 
 const { expect } = require('chai')
-const { handler: getExpenses } = require('../handlers/get-expenses')
+const { handler: getExpenses } = require('../src/handlers/get-expenses')
 const { SUCCESSFUL_HTTP_STATUS_CODE } = require('./mock')
 
 describe('Get Expenses Tests', () => {
