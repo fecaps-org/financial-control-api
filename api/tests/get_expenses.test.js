@@ -3,22 +3,20 @@
 
 const { expect } = require('chai')
 const { handler: getExpenses } = require('../src/handlers/get-expenses')
-const { SUCCESSFUL_HTTP_STATUS_CODE } = require('./mock')
+const { output } = require('./mock')
 
 describe('Get Expenses Tests', () => {
   before(() => { debugger })
 
-  it('Expect to validate expenses response', async () => {
+  it('Expect to validate full response of expenses function', async () => {
     const response = await getExpenses({})
+
     expect(response).to.be.an('object')
     expect(response).to.have.keys([ 'statusCode', 'body' ])
-    expect(response.statusCode).to.be.a('number')
-    expect(response.statusCode).to.be.equal(SUCCESSFUL_HTTP_STATUS_CODE)
-    expect(response.body).to.be.a('string')
-  })
 
-  it('Expect to validate expenses payload format', async () => {
-    const response = await getExpenses({})
+    expect(response.statusCode).to.be.a('number')
+    expect(response.statusCode).to.be.equal(output.SUCCESSFUL_HTTP_STATUS_CODE)
+
     expect(response.body).to.be.a('string')
     const bodyAsObject = JSON.parse(response.body)
     expect(bodyAsObject.data).to.be.an('array')

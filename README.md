@@ -47,13 +47,13 @@ $ npm run buildApi
 $ npm run fixApiStyle
 ```
 
-- Run Web API integration tests without **Debugger**:
+- Run Web API unit/integration tests without **Debugger**:
 
 ```bash
 $ npm run runApiTests
 ```
 
-- Run Web API integration tests with **Debugger** :
+- Run Web API unit/integration tests with **Debugger** :
 
 On port 9300
 
