@@ -2,7 +2,7 @@
 /* eslint no-debugger: off */
 
 const { expect } = require('chai')
-const { handler: getCategories } = require('../src/handlers/get-expenses-categories')
+const { handler: getCategories } = require('../src/handlers/get-categories')
 const { SUCCESSFUL_HTTP_STATUS_CODE } = require('./mock')
 
 describe('Get Expenses Categories Tests', () => {

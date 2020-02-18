@@ -33,7 +33,7 @@ functions:
          method: get
 
   get-categories:
-    handler: src/handlers/get-expenses-categories.handler
+    handler: src/handlers/get-categories.handler
     description: Financial Control API - Get All Categories
     events:
       - http:
