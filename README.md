@@ -53,12 +53,10 @@ $ npm run fixApiStyle
 $ npm run runApiTests
 ```
 
-- Run Web API tests with **Debugger**:
+- Run Web API tests with **Debugger** :
+
+On port 9300
 
 ```bash
-$ npm run runApiTests
+$ npm run runApiTestsDebugger
 ```
-
-### Resources
-
-- AWS DynamoDB

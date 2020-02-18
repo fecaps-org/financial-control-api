@@ -3,16 +3,16 @@
 
 const { expect } = require('chai')
 const { handler: getExpenses } = require('../handlers/get-expenses')
+const { SUCCESSFUL_HTTP_STATUS_CODE } = require('./mock')
 
 describe('Get Expenses Tests', () => {
   before(() => { debugger })
 
   it('Expect to validate expenses response', async () => {
     const response = await getExpenses({})
-    const SUCCESSFUL_HTTP_STATUS_CODE = 200
     expect(response).to.be.an('object')
     expect(response.statusCode).to.be.a('number')
-    expect(response.statusCode).to.equal(SUCCESSFUL_HTTP_STATUS_CODE)
+    expect(response.statusCode).to.be.equal(SUCCESSFUL_HTTP_STATUS_CODE)
     expect(response.body).to.be.a('string')
   })
 

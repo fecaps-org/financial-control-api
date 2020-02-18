@@ -16,7 +16,7 @@
   "scripts": {
     "build": "sls deploy",
     "test": "nyc --check-coverage --lines 100 --functions 100 --reporter=html --reporter=text mocha -S tests/*.test.js --exit --timeout 555555",
-    "test-debugger": "mocha --inspect-brk=9300 -S test/*.test.js --exit --timeout 0",
+    "test-debugger": "mocha --inspect-brk=9300 -S tests/*.test.js --exit --timeout 0",
     "checkStyle": "./node_modules/eslint/bin/eslint.js ./",
     "fixStyle": "./node_modules/eslint/bin/eslint.js ./ --fix"
   },

@@ -16,7 +16,8 @@
         "buildApi": "cd api && npm run build && cd ..",
         "checkApiStyle": "cd api && npm run checkStyle && cd ..",
         "fixApiStyle": "cd api && npm run fixStyle && cd ..",
-        "runApiTests": "cd api && npm test && cd .."
+        "runApiTests": "cd api && npm test && cd ..",
+        "runApiTestsDebugger": "cd api && npm run test-debugger && cd .."
     },
     "husky": {
         "hooks": {
