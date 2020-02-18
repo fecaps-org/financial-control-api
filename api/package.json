@@ -9,11 +9,10 @@
   "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
   "license": "ISC",
   "files": [
-    "src/defaults.js",
-    "src/handlers",
-    "src/transformers"
+    "src"
   ],
   "scripts": {
+    "seed": "node src/seeders",
     "build": "sls deploy",
     "test": "nyc --check-coverage --lines 100 --functions 100 --reporter=html --reporter=text mocha -S tests/*.test.js --exit --timeout 555555",
     "test-debugger": "mocha --inspect-brk=9300 -S tests/*.test.js --exit --timeout 0",

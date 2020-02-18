@@ -11,6 +11,7 @@ describe('Get Expenses Tests', () => {
   it('Expect to validate expenses response', async () => {
     const response = await getExpenses({})
     expect(response).to.be.an('object')
+    expect(response).to.have.keys([ 'statusCode', 'body' ])
     expect(response.statusCode).to.be.a('number')
     expect(response.statusCode).to.be.equal(SUCCESSFUL_HTTP_STATUS_CODE)
     expect(response.body).to.be.a('string')
@@ -18,9 +19,8 @@ describe('Get Expenses Tests', () => {
 
   it('Expect to validate expenses payload format', async () => {
     const response = await getExpenses({})
-    expect(typeof response.body).to.be.equal('string')
+    expect(response.body).to.be.a('string')
     const bodyAsObject = JSON.parse(response.body)
-    expect(typeof bodyAsObject.data).to.be.equal('object')
-    expect(bodyAsObject.data).to.an('array')
+    expect(bodyAsObject.data).to.be.an('array')
   })
 })

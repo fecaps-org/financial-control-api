@@ -12,7 +12,7 @@
         "postinstall": "npm run installApiDependencies",
         "installApiDependencies": "cd api && npm i && cd ..",
         "generateApiEnvFile": "cd api && cp .env.dist .env && cd ..",
-        "runApiSeeders": "cd api && node seeders && cd ..",
+        "runApiSeeders": "cd api && npm run seed && cd ..",
         "buildApi": "cd api && npm run build && cd ..",
         "checkApiStyle": "cd api && npm run checkStyle && cd ..",
         "fixApiStyle": "cd api && npm run fixStyle && cd ..",

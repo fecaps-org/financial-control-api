@@ -1,7 +1,9 @@
 'use strict'
 
-const AWS = require('aws-sdk')
 const { AWS_REGION } = require('../defaults')
+
+// eslint-disable-next-line node/no-unpublished-require
+const AWS = require('aws-sdk')
 AWS.config.region = AWS_REGION
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient()

@@ -11,6 +11,7 @@ describe('Get Expenses Categories Tests', () => {
   it('Expect to validate expenses categories response', async () => {
     const response = await getCategories({})
     expect(response).to.be.an('object')
+    expect(response).to.have.keys([ 'statusCode', 'body' ])
     expect(response.statusCode).to.be.a('number')
     expect(response.statusCode).to.be.equal(SUCCESSFUL_HTTP_STATUS_CODE)
     expect(response.body).to.be.a('string')
@@ -18,13 +19,18 @@ describe('Get Expenses Categories Tests', () => {
 
   it('Expect to validate expenses categories payload format', async () => {
     const response = await getCategories({})
-    expect(typeof response.body).to.be.equal('string')
+    expect(response.body).to.be.a('string')
 
     const bodyAsObject = JSON.parse(response.body)
     const QUANTITY_OF_CATEGORIES = 4
 
-    expect(typeof bodyAsObject.data).to.equal('object')
     expect(bodyAsObject.data).to.be.an('array')
     expect(bodyAsObject.data.length).to.be.equal(QUANTITY_OF_CATEGORIES)
+    bodyAsObject.data.forEach(category => {
+      expect(category).to.be.an('object')
+      expect(category).to.have.keys([ 'name', 'description' ])
+      expect(category.name).to.be.a('string')
+      expect(category.description).to.be.a('string')
+    })
   })
 })
