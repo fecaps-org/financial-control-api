@@ -4,7 +4,7 @@ const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('../../defaults')
 
 // eslint-disable-next-line node/no-unpublished-require
 const AWS = require('aws-sdk')
-const dynamoDB = new AWS.DynamoDB({ region: AWS_REGION })
+const dynamoDB = new AWS.DynamoDB.DocumentClient({ region: AWS_REGION })
 
 module.exports.getCategories = () => new Promise(resolve => {
   const categoriesRequest = {
