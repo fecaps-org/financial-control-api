@@ -1,10 +1,10 @@
 {
-  "name": "financial_control_api",
+  "name": "financial-control-api",
   "version": "1.0.0",
   "description": "Financial Control API",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fecaps/financial-control.git"
+    "url": "git+https://github.com/fecaps/financial-control-api.git"
   },
   "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
   "license": "ISC",
@@ -36,9 +36,9 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/fecaps/financial-control/issues"
+    "url": "https://github.com/fecaps/financial-control-api/issues"
   },
-  "homepage": "https://github.com/fecaps/financial-control#readme",
+  "homepage": "https://github.com/fecaps/financial-control-api#readme",
   "devDependencies": {
     "aws-sdk": "^2.616.0",
     "chai": "^4.2.0",
