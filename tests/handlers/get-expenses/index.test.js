@@ -2,8 +2,8 @@
 /* eslint no-debugger: off */
 
 const { expect } = require('chai')
-const { handler: getExpenses } = require('../src/handlers/get-expenses')
-const { output } = require('./mock')
+const { output } = require('../../mocks/expenses')
+const { handler: getExpenses } = require('../../../src/handlers/get-expenses')
 
 describe('Get Expenses Tests', () => {
   before(() => { debugger })

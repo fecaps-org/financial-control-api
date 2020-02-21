@@ -4,10 +4,10 @@
         <configuration name="financial control api" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" port="9300" restartOnDisconnect="true">
             <method v="2" />
         </configuration>
-        <configuration name="get-categories function" type="NodeJSConfigurationType" application-parameters="&quot;invoke&quot; &quot;local&quot; &quot;-f&quot; &quot;get-categories&quot; &quot;-d&quot; &quot;{}&quot;" path-to-js-file="node_modules/.bin/sls" working-dir="$PROJECT_DIR$/api">
+        <configuration name="get-categories function" type="NodeJSConfigurationType" application-parameters="&quot;invoke&quot; &quot;local&quot; &quot;-f&quot; &quot;get-categories&quot; &quot;-d&quot; &quot;{}&quot;" path-to-js-file="node_modules/.bin/sls" working-dir="$PROJECT_DIR$">
             <method v="2" />
         </configuration>
-        <configuration name="get-expenses function" type="NodeJSConfigurationType" application-parameters="&quot;invoke&quot; &quot;local&quot; &quot;-f&quot; &quot;get-expenses&quot; &quot;-d&quot; &quot;{}&quot;" path-to-js-file="node_modules/.bin/sls" working-dir="$PROJECT_DIR$/api">
+        <configuration name="get-expenses function" type="NodeJSConfigurationType" application-parameters="&quot;invoke&quot; &quot;local&quot; &quot;-f&quot; &quot;get-expenses&quot; &quot;-d&quot; &quot;{}&quot;" path-to-js-file="node_modules/.bin/sls" working-dir="$PROJECT_DIR$">
             <method v="2" />
         </configuration>
         <list>

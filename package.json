@@ -1,36 +1,57 @@
 {
-    "name": "financial_control",
-    "version": "1.0.0",
-    "description": "Financial Control Full Project",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/fecaps/financial-control.git"
-    },
-    "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
-    "license": "ISC",
-    "scripts": {
-        "postinstall": "npm run installApiDependencies",
-        "installApiDependencies": "cd api && npm i && cd ..",
-        "generateApiEnvFile": "cd api && cp .env.dist .env && cd ..",
-        "runApiSeeders": "cd api && npm run seed && cd ..",
-        "buildApi": "cd api && npm run build && cd ..",
-        "checkApiStyle": "cd api && npm run checkStyle && cd ..",
-        "fixApiStyle": "cd api && npm run fixStyle && cd ..",
-        "runApiTests": "cd api && npm test && cd ..",
-        "runApiTestsDebugger": "cd api && npm run test-debugger && cd ..",
-        "invokeApiFunction": "cd api && FUNCTION_NAME=$FUNCTION_NAME npm run invokeFunction && cd .."
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run checkApiStyle",
-            "pre-push": "npm run runApiTests"
-        }
-    },
-    "bugs": {
-        "url": "https://github.com/fecaps/financial-control/issues"
-    },
-    "homepage": "https://github.com/fecaps/financial-control#readme",
-    "devDependencies": {
-        "husky": "^4.2.3"
+  "name": "financial_control_api",
+  "version": "1.0.0",
+  "description": "Financial Control API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fecaps/financial-control.git"
+  },
+  "author": "Fellipe Capelli <fellipecapelli@gmail.com>",
+  "license": "ISC",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=12.16.0"
+  },
+  "scripts": {
+    "seed": "node src/seeders",
+    "build": "./node_modules/.bin/sls deploy",
+    "test": "nyc --check-coverage --lines 100 --functions 100 --reporter=html --reporter=text mocha --recursive -S tests --exit --timeout 555555",
+    "testDebugger": "mocha --inspect-brk=9300 -S tests/*.test.js --exit --timeout 0",
+    "checkStyle": "./node_modules/eslint/bin/eslint.js ./",
+    "fixStyle": "./node_modules/eslint/bin/eslint.js ./ --fix",
+    "invokeFunction": "./node_modules/.bin/sls invoke local -f $FUNCTION_NAME"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run checkStyle",
+      "pre-push": "npm test"
     }
+  },
+  "nyc": {
+    "exclude": [
+      "coverage",
+      "tests"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/fecaps/financial-control/issues"
+  },
+  "homepage": "https://github.com/fecaps/financial-control#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.616.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.3",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "serverless": "^1.63.0",
+    "serverless-dotenv-plugin": "^2.3.2"
+  }
 }

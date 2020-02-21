@@ -1,13 +1,12 @@
 'use strict'
 
-const { AWS_REGION } = require('../defaults')
+const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('../config')
 
 // eslint-disable-next-line node/no-unpublished-require
 const AWS = require('aws-sdk')
 AWS.config.region = AWS_REGION
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient()
-const { EXPENSES_CATEGORIES_TABLE } = require('../defaults')
 
 module.exports.seedExpensesCategories = () => {
   const expensesCategories = [

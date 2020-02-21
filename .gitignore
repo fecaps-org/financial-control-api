@@ -1,15 +1,8 @@
-# full project
+jspm_packages
 package-lock.json
 node_modules
-
-# Api
-api/.env
-api/node_modules
-api/jspm_packages
-api/.serverless
-api/package-lock.json
-api/coverage
-api/.nyc_output
-
-# IDE
+.env
+.serverless
+coverage
+.nyc_output
 .idea

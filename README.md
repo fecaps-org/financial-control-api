@@ -1,4 +1,4 @@
-# Financial Control App
+# Financial Control Web API
 
 ### Pre requisites:
 
@@ -6,74 +6,74 @@
 
 ### Setup
 
-- Install full project dependencies:
+- Installing dependencies:
 
 ```bash
 $ npm i
 ```
 
-- Installing Web API dependencies:
-
-** <i>There's no need to run this command if the full project dependencies command was executed</i>
+- Copy environment variables and edit them based on your AWS Account data:
 
 ```bash
-$ npm run installApiDependencies
+$  cp .env.dist .env
 ```
 
-- Copy Web API environment variables and edit them based on your AWS Account data:
+- Running seeders:
 
 ```bash
-$ npm run generateApiEnvFile
-```
-
-- Running Web API seeders:
-
-```bash
-$ npm run runApiSeeders
+$ npm run seed
 ```
 
 ### Debug
 
-In order to start debugging the functions in any **IntelliJ IDE** follow the steps below:
+#### Intellij IDEs
 
 - Download `workspace.xml` file in the `ide-configs` directory
 
-- Copy and paste it to `{{intellijWorkspaceFolder}}/.idea` (or update your `.idea/workspace.xml` file)
+- Copy and paste it to `{{PROJECT_ROOT}}/.idea` (or update your `.idea/workspace.xml` file)
 
 - Restart IDE
 
-- Check debugger configurations in the top right corner
+- Check debugger configurations
+
+### Code Style
+
+- Check style:
+
+```bash
+$ npm run checkStyle
+```
+
+- Fix style:
+
+```bash
+$ npm run fixStyle
+```
+
+### Tests
+
+- Run tests:
+
+```bash
+$ npm test
+```
+
+- Run tests with **Debugger** (port 9300):
+
+```bash
+$ npm run testDebugger
+```
 
 ### Usage
 
-- Deploying Web API:
+- Deploying:
 
 ```bash
-$ npm run buildApi
-```
-
-- Fix Web API style:
-
-```bash
-$ npm run fixApiStyle
-```
-
-- Run Web API unit/integration tests without **Debugger**:
-
-```bash
-$ npm run runApiTests
-```
-
-- Run Web API unit/integration tests with **Debugger** :
-
-On port 9300
-
-```bash
-$ npm run runApiTestsDebugger
+$ npm run build
 ```
 
 - Run a function locally:
 
 ```bash
-$ FUNCTION_NAME=get-categories npm run invokeApiFunction
+$ FUNCTION_NAME=get-categories npm run invokeFunction
 ```

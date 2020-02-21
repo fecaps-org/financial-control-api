@@ -1,10 +1,11 @@
 'use strict'
 
 // eslint-disable-next-line node/no-unpublished-require
-const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('../src/defaults')
+const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('../../src/config')
 
 const AWS = require('aws-sdk')
 const db = new AWS.DynamoDB.DocumentClient({ region: AWS_REGION })
+const { output: defaultOutput } = require('./default')
 
 module.exports = {
   input: {
@@ -14,8 +15,7 @@ module.exports = {
   },
 
   output: {
-    SUCCESSFUL_HTTP_STATUS_CODE: 200,
-    NO_DATA_LENGTH: 0,
+    ...defaultOutput,
     QUANTITY_OF_CATEGORIES: 4
   }
 }
