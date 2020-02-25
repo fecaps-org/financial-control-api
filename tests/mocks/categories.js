@@ -1,11 +1,10 @@
 'use strict'
 
-// eslint-disable-next-line node/no-unpublished-require
-const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('../../src/config')
-
-const AWS = require('aws-sdk')
-const db = new AWS.DynamoDB.DocumentClient({ region: AWS_REGION })
+const { EXPENSES_CATEGORIES_TABLE } = require('config')
 const { output: defaultOutput } = require('./default')
+const DatabaseConnection = require('database/Connection')
+
+const db = DatabaseConnection.getInstance()
 
 module.exports = {
   input: {

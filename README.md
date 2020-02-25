@@ -14,6 +14,9 @@ $ npm i
 
 - Copy environment variables and edit them based on your AWS Account data:
 
+This command is used only in *localhost*, when willing to run the application in
+AWS the environment variables must be added *manually* to **AWS Code Deploy**
+
 ```bash
 $  cp .env.dist .env
 ```

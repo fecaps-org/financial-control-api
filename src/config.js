@@ -3,9 +3,15 @@
 const EXPENSES_CATEGORIES_TABLE = process.env.EXPENSES_CATEGORIES_TABLE ||
   'expenses_categories'
 
-const AWS_REGION = process.env.REGION || 'us-east-1'
+const ACCESS_KEY_ID = process.env.ACCESS_KEY_ID
+
+const SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY
+
+const REGION = process.env.REGION || 'us-east-1'
 
 module.exports = {
   EXPENSES_CATEGORIES_TABLE,
-  AWS_REGION
+  ACCESS_KEY_ID,
+  SECRET_ACCESS_KEY,
+  REGION
 }

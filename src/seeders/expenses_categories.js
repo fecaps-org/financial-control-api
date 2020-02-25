@@ -1,12 +1,20 @@
+/* eslint-disable node/no-unpublished-require */
 'use strict'
 
-const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('config')
+const {
+  EXPENSES_CATEGORIES_TABLE,
+  ACCESS_KEY_ID,
+  SECRET_ACCESS_KEY,
+  REGION
+} = require('config')
 
-// eslint-disable-next-line node/no-unpublished-require
 const AWS = require('aws-sdk')
-AWS.config.region = AWS_REGION
 
-const dynamoDb = new AWS.DynamoDB.DocumentClient()
+const dynamoDb = new AWS.DynamoDB.DocumentClient({
+  ...(ACCESS_KEY_ID && { accessKeyId: ACCESS_KEY_ID } || {}),
+  ...(SECRET_ACCESS_KEY && { secretAccessKey: SECRET_ACCESS_KEY } || {}),
+  region: REGION
+})
 
 module.exports.seedExpensesCategories = () => {
   const expensesCategories = [

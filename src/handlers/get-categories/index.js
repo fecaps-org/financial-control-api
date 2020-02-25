@@ -1,17 +1,14 @@
 'use strict'
 
-const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('config')
-// eslint-disable-next-line node/no-unpublished-require
-const AWS = require('aws-sdk')
-const db = new AWS.DynamoDB.DocumentClient({ region: AWS_REGION })
+const { EXPENSES_CATEGORIES_TABLE } = require('config')
 const { transform } = require('transformers')
 
-console.log('\ndb\n')
-console.dir(db, { depth: null })
-console.log('\n\n')
-
+const DatabaseConnection = require('database/Connection')
 const Categories = require('./Categories')
-const categories = new Categories(db)
+
+const databaseConnection = DatabaseConnection.getInstance()
+const categories = new Categories(databaseConnection)
+
 categories.defineTableName(EXPENSES_CATEGORIES_TABLE)
 
 module.exports.handler = async () => {

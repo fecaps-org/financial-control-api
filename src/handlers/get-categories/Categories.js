@@ -19,9 +19,6 @@ class Categories {
       const result = await this.db.scan(categoriesRequest).promise()
       return result && result.Items || []
     } catch (err) {
-      console.log('\n\nerr')
-      console.dir(err, { depth: null })
-      console.log('\n\n')
       return []
     }
   }
