@@ -14,12 +14,12 @@ $ npm i
 
 - Copy environment variables and edit them based on your AWS Account data:
 
-This command is used only in *localhost*, when willing to run the application in
-AWS the environment variables must be added *manually* to **AWS Code Deploy**
-
 ```bash
 $  cp .env.dist .env
 ```
+
+** Despite generating the `.env` file there are two variables that must be
+manually added to **AWS Code Deploy** as  `PARAMETER_STORE`: `ACCESS_KEY_ID`, `SECRET_ACCESS_KEY`
 
 - Running seeders:
 

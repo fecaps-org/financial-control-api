@@ -27,6 +27,10 @@ elif [ "$1" = "test" ]; then
   npm run postinstall
 
   echo ""
+  echo "- Copy env file"
+  cp .env.dist .env
+
+  echo ""
   echo "- Testing"
   npm test
 elif [ "$1" = "deploy" ] && [ $# = 2 ]; then
@@ -37,6 +41,10 @@ elif [ "$1" = "deploy" ] && [ $# = 2 ]; then
   echo ""
   echo "- Setup post install links, scripts, etc"
   npm run postinstall
+
+  echo ""
+  echo "- Copy env file"
+  cp .env.dist .env
 
   echo ""
   echo "- Deploying"
