@@ -3,7 +3,7 @@
 
 const { expect } = require('chai')
 const { output } = require('../../mocks/expenses')
-const { handler: getExpenses } = require('../../../src/handlers/get-expenses')
+const { handler: getExpenses } = require('handlers/get-expenses')
 
 describe('Get Expenses Tests', () => {
   before(() => { debugger })

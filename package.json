@@ -15,6 +15,7 @@
     "node": ">=12.16.0"
   },
   "scripts": {
+    "postinstall": "link-module-alias",
     "seed": "node src/seeders",
     "build": "./node_modules/.bin/sls deploy",
     "test": "nyc --check-coverage --lines 100 --functions 100 --reporter=html --reporter=text mocha --recursive -S tests --exit --timeout 555555",
@@ -39,6 +40,12 @@
     "url": "https://github.com/fecaps/financial-control-api/issues"
   },
   "homepage": "https://github.com/fecaps/financial-control-api#readme",
+  "_moduleAliases": {
+    "root": ".",
+    "handlers": "src/handlers",
+    "transformers": "src/transformers",
+    "config": "src/config.js"
+  },
   "devDependencies": {
     "aws-sdk": "^2.616.0",
     "chai": "^4.2.0",
@@ -53,5 +60,8 @@
     "nyc": "^15.0.0",
     "serverless": "^1.63.0",
     "serverless-dotenv-plugin": "^2.3.2"
+  },
+  "dependencies": {
+    "link-module-alias": "^1.2.0"
   }
 }

@@ -3,7 +3,7 @@
 
 const { expect } = require('chai')
 const { input, output } = require('../../mocks/categories')
-const Categories = require('../../../src/handlers/get-categories/Categories')
+const Categories = require('handlers/get-categories/Categories')
 
 describe('Categories Tests', () => {
   before(() => { debugger })

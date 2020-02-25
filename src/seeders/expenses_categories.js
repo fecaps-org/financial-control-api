@@ -1,6 +1,6 @@
 'use strict'
 
-const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('../config')
+const { AWS_REGION, EXPENSES_CATEGORIES_TABLE } = require('config')
 
 // eslint-disable-next-line node/no-unpublished-require
 const AWS = require('aws-sdk')

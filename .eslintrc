@@ -65,6 +65,7 @@
       "error",
       "module.exports"
     ],
-    "promise/no-callback-in-promise": "off"
+    "promise/no-callback-in-promise": "off",
+    "node/no-extraneous-require": "off"
   }
 }

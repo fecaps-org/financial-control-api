@@ -2,7 +2,7 @@
 /* eslint no-debugger: off */
 
 const { expect } = require('chai')
-const { transform } = require('../../src/transformers')
+const { transform } = require('transformers')
 const { input, output } = require('../mocks/transform')
 
 describe('Transform Tests', () => {
