@@ -57,7 +57,8 @@
     "mocha": "^7.0.1",
     "nyc": "^15.0.0",
     "serverless": "^1.63.0",
-    "serverless-dotenv-plugin": "^2.3.2"
+    "serverless-dotenv-plugin": "^2.3.2",
+    "serverless-pseudo-parameters": "^2.5.0"
   },
   "dependencies": {
     "link-module-alias": "^1.2.0"

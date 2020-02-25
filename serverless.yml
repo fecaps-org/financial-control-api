@@ -18,9 +18,10 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action: dynamodb:scan
-      Resource: arn:aws:dynamodb:${env:REGION}:${env:ACCOUNT_ID}:table/${env:EXPENSES_CATEGORIES_TABLE}
+      Resource: arn:aws:dynamodb:${env:REGION}:#{AWS:AccountId}:table/${env:EXPENSES_CATEGORIES_TABLE}
 
 plugins:
+  - serverless-pseudo-parameters
   - serverless-dotenv-plugin
 
 functions:
