@@ -21,10 +21,14 @@ if [ $# = 0 ]; then
 elif [ "$1" = "test" ]; then
   HUSKY_SKIP_INSTALL=1 npm i
 
+  npm run postinstall
+
   npm test
 elif [ "$1" = "deploy" ] && [ $# = 2 ]; then
   STAGE=$2
   HUSKY_SKIP_INSTALL=1 npm i
+
+  npm run postinstall
 
   'node_modules/.bin/sls' deploy -s $STAGE
 else
