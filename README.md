@@ -69,7 +69,8 @@ $ npm run testDebugger
 - Deploying:
 
 ```bash
-$ npm run build
+$ chmod +x ./build.sh && \
+./build.sh deploy dev
 ```
 
 - Run a function locally:
