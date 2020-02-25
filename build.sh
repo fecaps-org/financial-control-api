@@ -19,17 +19,35 @@ if [ $# = 0 ]; then
   howToUse
   exit 1
 elif [ "$1" = "test" ]; then
+  echo "- Install dependencies"
   HUSKY_SKIP_INSTALL=1 npm i
 
+  echo ""
+  echo "- Setup post install links, scripts, etc"
   npm run postinstall
 
+  echo ""
+  echo "- Copy env file"
+  cp .env.dist .env
+
+  echo ""
+  echo "- Testing"
   npm test
 elif [ "$1" = "deploy" ] && [ $# = 2 ]; then
   STAGE=$2
+  echo "- Install dependencies"
   HUSKY_SKIP_INSTALL=1 npm i
 
+  echo ""
+  echo "- Setup post install links, scripts, etc"
   npm run postinstall
 
+  echo ""
+  echo "- Copy env file"
+  cp .env.dist .env
+
+  echo ""
+  echo "- Deploying"
   'node_modules/.bin/sls' deploy -s $STAGE
 else
   howToUse
