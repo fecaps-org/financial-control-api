@@ -19,12 +19,12 @@ if [ $# = 0 ]; then
   howToUse
   exit 1
 elif [ "$1" = "test" ]; then
-  npm i
+  HUSKY_SKIP_INSTALL=1 npm i
 
   npm test
 elif [ "$1" = "deploy" ] && [ $# = 2 ]; then
   STAGE=$2
-  npm i
+  HUSKY_SKIP_INSTALL=1 npm i
 
   'node_modules/.bin/sls' deploy -s $STAGE
 else
