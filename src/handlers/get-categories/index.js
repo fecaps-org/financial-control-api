@@ -6,6 +6,10 @@ const AWS = require('aws-sdk')
 const db = new AWS.DynamoDB.DocumentClient({ region: AWS_REGION })
 const { transform } = require('transformers')
 
+console.log('\ndb\n')
+console.dir(db, { depth: null })
+console.log('\n\n')
+
 const Categories = require('./Categories')
 const categories = new Categories(db)
 categories.defineTableName(EXPENSES_CATEGORIES_TABLE)
