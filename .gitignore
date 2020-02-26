@@ -6,3 +6,6 @@ node_modules
 coverage
 .nyc_output
 .idea
+infrastructure/terraform.tfstate*
+infrastructure/.terraform*
+infrastructure/terraform.tfvars

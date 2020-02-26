@@ -41,18 +41,18 @@ functions:
          path: categories
          method: get
 
-resources:
-  Resources:
-    expensesCategoriesTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: ${env:EXPENSES_CATEGORIES_TABLE}
-        AttributeDefinitions:
-          - AttributeName: name
-            AttributeType: S
-        KeySchema:
-          - AttributeName: name
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+#resources:
+#  Resources:
+#    expensesCategoriesTable:
+#      Type: AWS::DynamoDB::Table
+#      Properties:
+#        TableName: ${env:EXPENSES_CATEGORIES_TABLE}
+#        AttributeDefinitions:
+#          - AttributeName: name
+#            AttributeType: S
+#        KeySchema:
+#          - AttributeName: name
+#            KeyType: HASH
+#        ProvisionedThroughput:
+#          ReadCapacityUnits: 1
+#          WriteCapacityUnits: 1

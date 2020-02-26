@@ -1,0 +1,3 @@
+region = "us-east-1"
+tableName = "expenses_categories"
+stage = "dev"
