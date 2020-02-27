@@ -2,10 +2,10 @@
 /* eslint no-debugger: off */
 
 const { expect } = require('chai')
-const { output } = require('../../mocks/categories')
+const { output } = require('../../mocks/get-categories')
 const { handler: getCategories } = require('handlers/get-categories')
 
-describe('Get Categories Tests', () => {
+describe('Get Categories Function Tests', () => {
   before(() => { debugger })
 
   it('Expect to validate full response of categories function', async () => {

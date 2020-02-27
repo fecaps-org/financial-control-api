@@ -2,10 +2,10 @@
 /* eslint no-debugger: off */
 
 const { expect } = require('chai')
-const { input, output } = require('../../mocks/categories')
+const { input, output } = require('../../mocks/get-categories')
 const Categories = require('handlers/get-categories/Categories')
 
-describe('Categories Tests', () => {
+describe('Get Categories Function - Categories Tests', () => {
   before(() => { debugger })
 
   it('Expect to return error when injecting invalid DB instance on Categories', async () => {

@@ -2,10 +2,10 @@
 /* eslint no-debugger: off */
 
 const { expect } = require('chai')
-const { output } = require('../../mocks/expenses')
+const { output } = require('../../mocks/get-expenses')
 const { handler: getExpenses } = require('handlers/get-expenses')
 
-describe('Get Expenses Tests', () => {
+describe('Get Expenses Function Tests', () => {
   before(() => { debugger })
 
   it('Expect to validate full response of expenses function', async () => {
