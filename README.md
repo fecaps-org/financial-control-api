@@ -9,6 +9,10 @@
 
 Stateful resources are defined with **Terraform**, so in order to create/change the resources follow the steps below.
 
+**ATTENTION:** In order to fully create the infrastructure in AWS it's required to setup
+this project within an organization in GitHub, as Terraform has a limitation to setup
+a WebHook in a personal project, see more [here](https://www.terraform.io/docs/providers/github/r/repository_webhook.html) 
+
 ---
 
 - Create env file and update it based on your needs:
@@ -59,16 +63,11 @@ $  cp .env.dist .env
 
 ---
 
-- Setup manually environment variables on **AWS Code Deploy**:
-
-Despite generating the `.env` file there are two variables that must be
-manually added to **AWS Code Deploy** as  `PARAMETER_STORE`: `ACCESS_KEY_ID`, `SECRET_ACCESS_KEY`
-
----
-
 - Running seeders:
 
 **Obs.:** The stateful resources **must** be created **BEFORE** running this seed command
+
+**Obs.1:** This command must be executed only once
 
 ```bash
 $ npm run seed
