@@ -29,6 +29,18 @@ cp terraform.tfvars.dist terraform.tfvars
 $ terraform apply
 ``` 
 
+## Continuous Delivery
+
+After running the terraform command above, the CI/CD will be setup,
+as this command is responsible for creating these resources:
+
+- AWS Dynamo DB
+- AWS Code Pipeline (with a GitHub WebHook)
+- AWS Code Build
+
+With the CI/CD flow in place, all pushes to `master` will be
+automatically deployed.
+
 ## Application Setup
 
 - Installing dependencies:
@@ -109,6 +121,8 @@ $ npm run testDebugger
 ## Usage
 
 - Deploying:
+
+** Unnecessary, unless willing to deploy without pushing the code to `master`
 
 ```bash
 $ chmod +x ./build.sh && \
