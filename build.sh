@@ -15,28 +15,35 @@ howToUse()
   echo "- Deploying to dev: ./build.sh deploy dev"
 }
 
+installDependencies()
+{
+  echo "- Install dependencies"
+  HUSKY_SKIP_INSTALL=1 npm i
+}
+
+setupPostInstall()
+{
+  echo ""
+  echo "- Setup post install links, scripts, etc"
+  npm run postinstall
+}
+
 if [ $# = 0 ]; then
   howToUse
   exit 1
 elif [ "$1" = "test" ]; then
-  echo "- Install dependencies"
-  HUSKY_SKIP_INSTALL=1 npm i
+  installDependencies
 
-  echo ""
-  echo "- Setup post install links, scripts, etc"
-  npm run postinstall
+  setupPostInstall
 
   echo ""
   echo "- Testing"
   npm test
 elif [ "$1" = "deploy" ] && [ $# = 2 ]; then
   STAGE=$2
-  echo "- Install dependencies"
-  HUSKY_SKIP_INSTALL=1 npm i
+  installDependencies
 
-  echo ""
-  echo "- Setup post install links, scripts, etc"
-  npm run postinstall
+  setupPostInstall
 
   echo ""
   echo "- Deploying"

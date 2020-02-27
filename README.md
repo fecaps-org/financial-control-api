@@ -9,13 +9,17 @@
 
 Stateful resources are defined with **Terraform**, so in order to create/change the resources follow the steps below.
 
-**ATTENTION:** In order to fully create the infrastructure in AWS it's required to setup
-this project within an organization in GitHub, as Terraform has a limitation to setup
+**REQUIREMENTS:**
+
+- In order to fully create the infrastructure in AWS it's required to setup
+this project within an Organization in GitHub, as Terraform has a limitation to setup
 a WebHook in a personal project, see more [here](https://www.terraform.io/docs/providers/github/r/repository_webhook.html) 
 
+- It's required to create a Personal Access Token in GitHub in order to use the environment variable
+`repositoryAccessToken` in Terraform configurations. See more [here](https://github.com/settings/tokens)
 ---
 
-- Create env file and update it based on your needs:
+- Create `terraform.tfvars.dist` file and update it based on your needs:
 
 ```bash
 $ cd infrastructure && \
@@ -26,7 +30,7 @@ cp terraform.tfvars.dist terraform.tfvars
 
 - Create resources:
 
-**Obs.:** In case of env file not being created the environment variables will use default values, which are set in
+**Obs.:** In case of `terraform.tfvars` file not being created the environment variables will use default values, which are set in
 `infrastructure/variables.tf` file
 
 ```bash
@@ -35,7 +39,7 @@ $ terraform apply
 
 ## Continuous Delivery
 
-After running the terraform command above, the CI/CD will be setup,
+After running the terraform command above, the CI/CD will be ready,
 as this command is responsible for creating these resources:
 
 - AWS Dynamo DB
@@ -55,7 +59,7 @@ $ npm i
 
 ---
 
-- Copy environment variables and edit them based on your needs:
+- Copy `.env.dist` file and edit them based on your needs:
 
 ```bash
 $  cp .env.dist .env
