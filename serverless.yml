@@ -67,3 +67,9 @@ functions:
 #        ProvisionedThroughput:
 #          ReadCapacityUnits: 1
 #          WriteCapacityUnits: 1
+#
+#    expenseEventsStream:
+#      Type: AWS::Kinesis::Stream
+#      Properties:
+#        Name: ${env:EXPENSES_STREAM}
+#        ShardCount: 1

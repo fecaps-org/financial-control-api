@@ -41,3 +41,7 @@ variable accessKey {
 variable secretKey {
   default = "secret-key"
 }
+
+variable kinesisDataStream {
+  default = "expense_events"
+}

@@ -42,9 +42,10 @@ $ terraform apply
 After running the terraform command above, the CI/CD will be ready,
 as this command is responsible for creating these resources:
 
-- AWS Dynamo DB
 - AWS Code Pipeline (with a GitHub WebHook)
 - AWS Code Build
+- AWS Dynamo DB
+- AWS Kinesis Data Stream
 
 With the CI/CD flow in place, all pushes to `master` will be
 automatically deployed.
