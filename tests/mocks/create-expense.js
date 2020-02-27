@@ -2,6 +2,9 @@
 
 const Joi = require('@hapi/joi')
 const { output: defaultOutput } = require('./default')
+const StreamConnection = require('streams/Connection')
+const streamConnection = new StreamConnection()
+const stream = streamConnection.get()
 
 const invalidDataTypes = {
   category: 1,
@@ -18,6 +21,8 @@ const valid = {
 module.exports = {
   input: {
     Joi,
+
+    stream,
 
     invalidDataTypes,
     invalidDataTypesAsJson: { body: JSON.stringify(invalidDataTypes) },

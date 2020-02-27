@@ -41,6 +41,7 @@
   "homepage": "https://github.com/fecaps/financial-control-api#readme",
   "_moduleAliases": {
     "database": "src/database",
+    "streams": "src/streams",
     "handlers": "src/handlers",
     "transformers": "src/transformers",
     "config": "src/config.js"
@@ -63,6 +64,7 @@
   },
   "dependencies": {
     "@hapi/joi": "^17.1.0",
-    "link-module-alias": "^1.2.0"
+    "link-module-alias": "^1.2.0",
+    "uuid": "^7.0.1"
   }
 }
