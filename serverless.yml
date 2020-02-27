@@ -19,6 +19,9 @@ provider:
     - Effect: Allow
       Action: dynamodb:scan
       Resource: arn:aws:dynamodb:${env:REGION}:#{AWS::AccountId}:table/${env:EXPENSES_CATEGORIES_TABLE}
+    - Effect: Allow
+      Action: kinesis:PutRecord
+      Resource: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
 
 plugins:
   - serverless-pseudo-parameters
@@ -32,6 +35,14 @@ functions:
       - http:
          path: expenses
          method: get
+
+  create-expense:
+    handler: src/handlers/create-expense.handler
+    description: Financial Control API - Create Expense
+    events:
+      - http:
+         path: expenses
+         method: post
 
   get-categories:
     handler: src/handlers/get-categories.handler

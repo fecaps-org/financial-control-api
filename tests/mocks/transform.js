@@ -1,12 +1,31 @@
 'use strict'
 
 module.exports = {
-  input: [
-    {
-      name: 'category name',
-      description: 'category description'
-    }
-  ],
+  input: {
+    requestBody: {
+      body: JSON.stringify({ name: 'ok' })
+    },
 
-  output: '{"data":[{"name":"category name","description":"category description"}]}'
+    response: [
+      {
+        name: 'category name',
+        description: 'category description'
+      }
+    ],
+
+    errors: [
+      {
+        message: 'x is required',
+        path: 'x'
+      }
+    ]
+  },
+
+  output: {
+    requestBody: { name: 'ok' },
+
+    response: '{"data":[{"name":"category name","description":"category description"}]}',
+
+    errors: '{"errors":[{"message":"x is required","path":"x"}]}'
+  }
 }

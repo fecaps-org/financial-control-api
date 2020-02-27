@@ -2,16 +2,34 @@
 /* eslint no-debugger: off */
 
 const { expect } = require('chai')
-const { transform } = require('transformers')
+const {
+  transformRequestBody,
+  transformResponse,
+  transformErrors
+} = require('transformers')
 const { input, output } = require('../mocks/transform')
 
 describe('Transform Tests', () => {
   before(() => { debugger })
 
-  it('Expect to validate data transformation', () => {
-    const response = transform(input)
+  it('Expect to transform request body', () => {
+    const response = transformRequestBody(input.requestBody)
+
+    expect(response).to.be.an('object')
+    expect(response).to.be.deep.equal(output.requestBody)
+  })
+
+  it('Expect to transform response', () => {
+    const response = transformResponse(input.response)
 
     expect(response).to.be.a('string')
-    expect(response).to.be.equal(output)
+    expect(response).to.be.equal(output.response)
+  })
+
+  it('Expect to transform errors', () => {
+    const response = transformErrors(input.errors)
+
+    expect(response).to.be.a('string')
+    expect(response).to.be.equal(output.errors)
   })
 })

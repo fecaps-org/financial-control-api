@@ -1,7 +1,7 @@
 'use strict'
 
 const { EXPENSES_CATEGORIES_TABLE } = require('config')
-const { transform } = require('transformers')
+const { transformResponse } = require('transformers')
 
 const DatabaseConnection = require('database/Connection')
 const Categories = require('./Categories')
@@ -16,6 +16,6 @@ module.exports.handler = async () => {
 
   return {
     statusCode: 200,
-    body: transform(result)
+    body: transformResponse(result)
   }
 }

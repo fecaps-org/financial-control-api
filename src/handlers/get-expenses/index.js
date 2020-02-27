@@ -1,8 +1,8 @@
 'use strict'
 
-const { transform } = require('transformers')
+const { transformResponse } = require('transformers')
 
 module.exports.handler = async () => ({
   statusCode: 200,
-  body: transform([])
+  body: transformResponse([])
 })

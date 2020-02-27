@@ -18,6 +18,7 @@ describe('Get Categories Function Tests', () => {
 
     expect(response.body).to.be.a('string')
     const bodyAsObject = JSON.parse(response.body)
+    expect(bodyAsObject).to.have.keys([ 'data' ])
     expect(bodyAsObject.data).to.be.an('array')
     expect(bodyAsObject.data.length).to.be.equal(output.QUANTITY_OF_CATEGORIES)
   })
