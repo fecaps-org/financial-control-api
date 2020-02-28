@@ -4,7 +4,7 @@
 
 const { expect } = require('chai')
 const { input } = require('../../mocks/create-expense')
-const ExpenseEvent = require('handlers/create-expense/Event')
+const Expense = require('handlers/create-expense/Expense')
 
 describe('Create Expense Function - Event Tests', () => {
   before(() => {
@@ -13,8 +13,8 @@ describe('Create Expense Function - Event Tests', () => {
 
   it('Expect to return error when injecting invalid Stream instance on Event', async () => {
     try {
-      const expenseEvent = new ExpenseEvent({})
-      const response = await expenseEvent.createExpenseEvent(input.valid)
+      const expenseEvent = new Expense({})
+      const response = await expenseEvent.createExpense(input.valid)
       expect(response).to.be.undefined
     } catch (err) {
       expect(err).to.not.be.undefined
@@ -29,8 +29,8 @@ describe('Create Expense Function - Event Tests', () => {
   })
 
   it('Expect to add event to expense stream', async () => {
-    const expenseEvent = new ExpenseEvent(input.stream)
-    const response = await expenseEvent.createExpenseEvent(input.valid)
+    const expenseEvent = new Expense(input.stream)
+    const response = await expenseEvent.createExpense(input.valid)
 
     expect(response).to.be.an('object')
     expect(response).to.have.keys([ 'ShardId', 'SequenceNumber' ])

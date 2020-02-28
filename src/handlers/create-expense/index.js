@@ -9,17 +9,16 @@ const {
 } = require('transformers')
 const ExpenseValidator = require('./Validator')
 const StreamConnection = require('streams/Connection')
-const ExpenseEvent = require('./Event')
+const Expense = require('./Expense')
 
 const validator = new ExpenseValidator(Joi)
-const streamConnection = new StreamConnection()
-const stream = streamConnection.get()
-const expenseEvent = new ExpenseEvent(stream)
+const streamConnection = StreamConnection.getInstance()
+const expenseEvent = new Expense(streamConnection)
 
 module.exports.handler = async event => {
   try {
     const validParams = await validator.validate(transformRequestBody(event))
-    await expenseEvent.createExpenseEvent(validParams)
+    await expenseEvent.createExpense(validParams)
 
     return {
       statusCode: 201,

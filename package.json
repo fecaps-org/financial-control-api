@@ -41,8 +41,9 @@
   "homepage": "https://github.com/fecaps/financial-control-api#readme",
   "_moduleAliases": {
     "database": "src/database",
-    "streams": "src/streams",
     "handlers": "src/handlers",
+    "notifiers": "src/notifiers",
+    "streams": "src/streams",
     "transformers": "src/transformers",
     "config": "src/config.js"
   },

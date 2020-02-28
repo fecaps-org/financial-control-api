@@ -1,14 +1,14 @@
 'use strict'
 
 const { v1: uuidV1 } = require('uuid')
-const { EXPENSES_STREAM } = require('config')
+const { EXPENSES_STREAM, EVENT_TYPE } = require('config')
 
-class Event {
+class Expense {
   constructor (dataStream) {
     this.dataStream = dataStream
   }
 
-  async createExpenseEvent (params) {
+  async createExpense (params) {
     try {
       const expenseId = uuidV1()
       const expenseData = this._defineData(params, expenseId)
@@ -24,7 +24,7 @@ class Event {
     return {
       expenseId,
       ...params,
-      eventType: 'expense_sent'
+      eventType: EVENT_TYPE
     }
   }
 
@@ -42,4 +42,4 @@ class Event {
   }
 }
 
-module.exports = Event
+module.exports = Expense

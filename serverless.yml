@@ -24,21 +24,13 @@ provider:
       Resource: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
     - Effect: Allow
       Action: sns:Publish
-      Resource: arn:aws:sns:${env:REGION}:#{AWS::AccountId}:${env:USER_NOTIFICATION_TOPIC}
+      Resource: arn:aws:sns:${env:REGION}:#{AWS::AccountId}:${env:EXPENSE_NOTIFICATION_TOPIC}
 
 plugins:
   - serverless-pseudo-parameters
   - serverless-dotenv-plugin
 
 functions:
-  get-expenses:
-    handler: src/handlers/get-expenses.handler
-    description: Financial Control API - Get All Expenses
-    events:
-      - http:
-         path: expenses
-         method: get
-
   create-expense:
     handler: src/handlers/create-expense.handler
     description: Financial Control API - Create Expense
@@ -54,6 +46,23 @@ functions:
       - http:
          path: categories
          method: get
+
+  get-expenses:
+    handler: src/handlers/get-expenses.handler
+    description: Financial Control API - Get All Expenses
+    events:
+      - http:
+         path: expenses
+         method: get
+
+  notify-expense:
+    handler: src/handlers/notify-expense.handler
+    description: Financial Control API - Notify Expense
+    events:
+      - stream:
+          arn: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
+    environment:
+      EXPENSE_NOTIFICATION_TOPIC_ARN: arn:aws:sns:${env:REGION}:#{AWS::AccountId}:${env:EXPENSE_NOTIFICATION_TOPIC}
 
 #resources:
 #  Resources:
@@ -77,8 +86,8 @@ functions:
 #        Name: ${env:EXPENSES_STREAM}
 #        ShardCount: 1
 #
-#    userNotificationTopic:
+#    expenseNotificationTopic:
 #      Type: AWS::SNS::Topic
 #      Properties:
-#        DisplayName: ${env:USER_NOTIFICATION_TOPIC}
-#        TopicName: ${env:USER_NOTIFICATION_TOPIC}
+#        DisplayName: ${env:EXPENSE_NOTIFICATION_TOPIC}
+#        TopicName: ${env:EXPENSE_NOTIFICATION_TOPIC}

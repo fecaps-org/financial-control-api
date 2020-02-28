@@ -1,22 +1,11 @@
-/* eslint-disable node/no-unpublished-require */
 'use strict'
 
-const {
-  EXPENSES_CATEGORIES_TABLE,
-  ACCESS_KEY_ID,
-  SECRET_ACCESS_KEY,
-  REGION
-} = require('config')
+const { EXPENSES_CATEGORIES_TABLE } = require('config')
 
-const AWS = require('aws-sdk')
+const DatabaseConnection = require('database/Connection')
+const db = DatabaseConnection.getInstance()
 
-const dynamoDb = new AWS.DynamoDB.DocumentClient({
-  ...(ACCESS_KEY_ID && { accessKeyId: ACCESS_KEY_ID } || {}),
-  ...(SECRET_ACCESS_KEY && { secretAccessKey: SECRET_ACCESS_KEY } || {}),
-  region: REGION
-})
-
-module.exports.seedExpensesCategories = () => {
+module.exports.seedExpensesCategories = async () => {
   const expensesCategories = [
     {
       name: 'transportation',
@@ -46,16 +35,14 @@ module.exports.seedExpensesCategories = () => {
     }
   }
 
-  return new Promise((resolve, reject) => {
-    dynamoDb.batchWrite(records, (err, data) => {
-      if (err) {
-        console.error('Seed - Expenses Categories didn\'t work:', err)
-        return reject(err)
-      }
+  try {
+    const data = await db.batchWrite(records).promise()
+    console.log('Seed - Expenses Categories: Finished!')
+    console.log(data)
 
-      console.log('Seed - Expenses Categories: Finished!')
-      console.log(data)
-      resolve(data)
-    })
-  })
+    return data
+  } catch (err) {
+    console.error('Seed - Expenses Categories didn\'t work:', err)
+    throw err
+  }
 }

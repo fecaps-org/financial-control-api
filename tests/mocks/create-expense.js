@@ -3,8 +3,7 @@
 const Joi = require('@hapi/joi')
 const { output: defaultOutput } = require('./default')
 const StreamConnection = require('streams/Connection')
-const streamConnection = new StreamConnection()
-const stream = streamConnection.get()
+const stream = StreamConnection.getInstance()
 
 const invalidDataTypes = {
   category: 1,

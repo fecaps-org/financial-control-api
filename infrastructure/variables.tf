@@ -47,7 +47,7 @@ variable kinesisDataStream {
 }
 
 variable snsName {
-  default = "user-notification"
+  default = "expense-notification"
 }
 
 variable phoneNumber {
