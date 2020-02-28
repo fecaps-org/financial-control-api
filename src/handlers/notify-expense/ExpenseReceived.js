@@ -9,14 +9,10 @@ class ExpenseReceived {
   }
 
   async createReceivedRecord (event) {
-    try {
-      const eventData = this._defineData(event)
-      const eventRequest = this._defineRequest(eventData)
+    const eventData = this._defineData(event)
+    const eventRequest = this._defineRequest(eventData)
 
-      return await this.dataStream.putRecord(eventRequest).promise()
-    } catch (err) {
-      console.error(err)
-    }
+    return this.dataStream.putRecord(eventRequest).promise()
   }
 
   _defineData (event) {

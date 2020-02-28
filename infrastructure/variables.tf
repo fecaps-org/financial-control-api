@@ -1,55 +1,69 @@
 variable "region" {
-  default = "us-west-1"
+  type        = string
+  description = "AWS region"
 }
 
 variable "tableName" {
-  default = "expenses_categories"
+  type        = string
+  description = "AWS DynamoDB table name"
 }
 
 variable "stage" {
-  default = "dev"
+  type        = string
+  description = "Stage"
 }
 
 variable "codeBuildProjectName" {
-  default = "codebuild-financial-control-api-project"
+  type        = string
+  description = "AWS Code Build project name"
 }
 
 variable "repositoryProvider" {
-  default = "GitHub"
+  type        = string
+  description = "Repository Provider"
 }
 
-variable repositoryAccessToken {
-  default = "access-token-here"
+variable "repositoryAccessToken" {
+  type        = string
+  description = "Repository Access Token"
 }
 
-variable repositoryOrganization {
-  default = "fecaps-org"
+variable "repositoryOrganization" {
+  type        = string
+  description = "Repository Organization"
 }
 
-variable repositoryName {
-  default = "financial-control-api"
+variable "repositoryName" {
+  type        = string
+  description = "Repository Name"
 }
 
-variable repositoryBranch {
-  default = "master"
+variable "repositoryBranch" {
+  type        = string
+  description = "Repository Branch"
 }
 
-variable accessKey {
-  default = "access-key"
+variable "accessKey" {
+  type        = string
+  description = "AWS Access Key"
 }
 
-variable secretKey {
-  default = "secret-key"
+variable "secretKey" {
+  type        = string
+  description = "AWS Secret Key"
 }
 
-variable kinesisDataStream {
-  default = "expense_events"
+variable "kinesisDataStream" {
+  type        = string
+  description = "AWS Kinesis Data Stream name"
 }
 
-variable snsName {
-  default = "expense-notification"
+variable "snsName" {
+  type        = string
+  description = "AWS SNS topic name"
 }
 
-variable phoneNumber {
-  default = "phone-here"
+variable "phoneNumber" {
+  type        = string
+  description = "Phone Number"
 }

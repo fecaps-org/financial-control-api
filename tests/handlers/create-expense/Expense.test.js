@@ -6,12 +6,12 @@ const { expect } = require('chai')
 const { input } = require('../../mocks/create-expense')
 const Expense = require('handlers/create-expense/Expense')
 
-describe('Create Expense Function - Event Tests', () => {
+describe('Create Expense Function - Expense Tests', () => {
   before(() => {
     debugger
   })
 
-  it('Expect to return error when injecting invalid Stream instance on Event', async () => {
+  it('Expect to return error when injecting invalid Stream instance', async () => {
     try {
       const expenseEvent = new Expense({})
       const response = await expenseEvent.createExpense(input.valid)

@@ -34,6 +34,7 @@ functions:
   create-expense:
     handler: src/handlers/create-expense.handler
     description: Financial Control API - Create Expense
+    timeout: 300
     events:
       - http:
          path: expenses
@@ -42,6 +43,7 @@ functions:
   get-categories:
     handler: src/handlers/get-categories.handler
     description: Financial Control API - Get All Categories
+    timeout: 300
     events:
       - http:
          path: categories
@@ -50,6 +52,7 @@ functions:
   get-expenses:
     handler: src/handlers/get-expenses.handler
     description: Financial Control API - Get All Expenses
+    timeout: 300
     events:
       - http:
          path: expenses
@@ -58,6 +61,7 @@ functions:
   notify-expense:
     handler: src/handlers/notify-expense.handler
     description: Financial Control API - Notify Expense
+    timeout: 300
     events:
       - stream:
           arn: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}

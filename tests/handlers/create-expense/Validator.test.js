@@ -9,7 +9,7 @@ const Validator = require('handlers/create-expense/Validator')
 describe('Create Expense Function - Validator Tests', () => {
   before(() => { debugger })
 
-  it('Expect to return error when injecting invalid Joi instance on Validator', async () => {
+  it('Expect to return error when injecting invalid Joi instance', async () => {
     try {
       const validator = new Validator({})
       const response = await validator.validate({})
@@ -21,7 +21,7 @@ describe('Create Expense Function - Validator Tests', () => {
     }
   })
 
-  it('Expect to return error when validating empty data on Validator', async () => {
+  it('Expect to return error when validating empty data', async () => {
     try {
       const validator = new Validator(input.Joi)
       const response = await validator.validate({})

@@ -25,18 +25,23 @@ class ExpenseNotifier {
   }
 
   async dispatchNotificationsAndRecords () {
-    if (!EXPENSE_NOTIFICATION_TOPIC_ARN) return
+    const result = { notifications: [], streams: [] }
 
     try {
       for (let i = 0; i < this.records.length; i++) {
         const record = this.records[i]
         const request = this._defineNotificationRequest(record)
-        await this.notifierConnection.publish(request).promise()
-        await this.expenseReceived.createReceivedRecord({ ...record })
+
+        const notifications = await this.notifierConnection.publish(request).promise()
+        result.notifications = { ...result.notifications, notifications }
+
+        const streams = await this.expenseReceived.createReceivedRecord({ ...record })
+        result.streams = { ...result.streams, streams }
       }
+
+      return result
     } catch (err) {
-      console.error(err)
-      throw err
+      return result
     }
   }
 

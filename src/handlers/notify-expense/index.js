@@ -9,6 +9,6 @@ const notifiers = new Notifier(notifierConnection)
 
 module.exports.handler = async event => {
   await notifiers.defineRecords(event)
-  await notifiers.dispatchNotificationsAndRecords()
-  return null
+  const result = await notifiers.dispatchNotificationsAndRecords()
+  return result
 }

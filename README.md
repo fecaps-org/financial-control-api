@@ -30,24 +30,24 @@ cp terraform.tfvars.dist terraform.tfvars
 
 - Create resources:
 
-**Obs.:** In case of `terraform.tfvars` file not being created the environment variables will use default values, which are set in
-`infrastructure/variables.tf` file
-
 ```bash
-$ terraform apply
+$ terraform validate && \
+terraform init && \
+terraform apply
 ``` 
 
 ## Continuous Delivery
 
-After running the terraform command above, the CI/CD will be ready,
+After running the Terraform command above, the CI/CD will be ready,
 as this command is responsible for creating these resources:
 
 - AWS Code Pipeline (with a GitHub WebHook)
 - AWS Code Build
 - AWS Dynamo DB
 - AWS Kinesis Data Stream
+- AWS SNS
 
-With the CI/CD flow in place, all pushes to `master` will be
+With the CI/CD in place, all pushes to `master` will be
 automatically deployed.
 
 ## Application Setup
