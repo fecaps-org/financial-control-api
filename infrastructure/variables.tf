@@ -45,3 +45,11 @@ variable secretKey {
 variable kinesisDataStream {
   default = "expense_events"
 }
+
+variable snsName {
+  default = "user-notification"
+}
+
+variable phoneNumber {
+  default = "phone-here"
+}

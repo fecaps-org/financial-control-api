@@ -22,6 +22,9 @@ provider:
     - Effect: Allow
       Action: kinesis:PutRecord
       Resource: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
+    - Effect: Allow
+      Action: sns:Publish
+      Resource: arn:aws:sns:${env:REGION}:#{AWS::AccountId}:${env:USER_NOTIFICATION_TOPIC}
 
 plugins:
   - serverless-pseudo-parameters
@@ -73,3 +76,9 @@ functions:
 #      Properties:
 #        Name: ${env:EXPENSES_STREAM}
 #        ShardCount: 1
+#
+#    userNotificationTopic:
+#      Type: AWS::SNS::Topic
+#      Properties:
+#        DisplayName: ${env:USER_NOTIFICATION_TOPIC}
+#        TopicName: ${env:USER_NOTIFICATION_TOPIC}
