@@ -28,7 +28,8 @@ describe('Notify Expense Function - Expense Received Tests', () => {
     const response = await expenseEvent.createReceivedRecord(payload)
 
     expect(response).to.be.an('object')
-    expect(response).to.have.keys([ 'ShardId', 'SequenceNumber' ])
+    expect(response).to.have.property('ShardId')
+    expect(response).to.have.property('SequenceNumber')
     expect(response.ShardId).to.be.a('string')
     expect(response.SequenceNumber).to.be.a('string')
   })

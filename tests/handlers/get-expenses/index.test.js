@@ -12,14 +12,15 @@ describe('Get Expenses Function Tests', () => {
     const response = await getExpenses({})
 
     expect(response).to.be.an('object')
-    expect(response).to.have.keys([ 'statusCode', 'body' ])
+    expect(response).to.have.property('statusCode')
+    expect(response).to.have.property('body')
 
     expect(response.statusCode).to.be.a('number')
     expect(response.statusCode).to.be.equal(output.SUCCESSFUL_HTTP_STATUS_CODE)
 
     expect(response.body).to.be.a('string')
     const bodyAsObject = JSON.parse(response.body)
-    expect(bodyAsObject).to.have.keys([ 'data' ])
+    expect(bodyAsObject).to.have.property('data')
     expect(bodyAsObject.data).to.be.an('array')
   })
 })

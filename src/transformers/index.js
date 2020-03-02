@@ -11,8 +11,17 @@ const transformResponse = data =>
 const transformErrors = errors =>
   JSON.stringify({ errors })
 
+const transformStreamRecord = record => {
+  const jsonData = Buffer
+    .from(record.kinesis.data, 'base64')
+    .toString()
+
+  return JSON.parse(jsonData)
+}
+
 module.exports = {
   transformRequestBody,
   transformResponse,
-  transformErrors
+  transformErrors,
+  transformStreamRecord
 }

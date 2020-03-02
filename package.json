@@ -17,7 +17,7 @@
   "scripts": {
     "postinstall": "link-module-alias",
     "seed": "node src/seeders",
-    "test": "nyc --check-coverage --lines 90 --functions 90 --reporter=html --reporter=text mocha --recursive -S tests --exit --timeout 555555",
+    "test": "nyc --check-coverage --lines 80 --functions 80 --reporter=html --reporter=text mocha --recursive -S tests --exit --timeout 555555",
     "testDebugger": "mocha --inspect-brk=9300 -S tests/*.test.js --exit --timeout 0",
     "checkStyle": "./node_modules/eslint/bin/eslint.js ./",
     "fixStyle": "./node_modules/eslint/bin/eslint.js ./ --fix",
@@ -66,6 +66,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.0",
     "link-module-alias": "^1.2.0",
+    "lodash": "^4.17.15",
     "uuid": "^7.0.1"
   }
 }

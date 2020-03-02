@@ -12,6 +12,7 @@ describe('Notify Expense Function Tests', () => {
     const response = await notifyExpense(input.events)
 
     expect(response).to.be.an('object')
-    expect(response).to.have.keys([ 'notifications', 'streams' ])
+    expect(response).to.have.property('notifications')
+    expect(response).to.have.property('streams')
   })
 })

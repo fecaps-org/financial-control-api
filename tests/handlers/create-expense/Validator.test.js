@@ -29,10 +29,11 @@ describe('Create Expense Function - Validator Tests', () => {
     } catch (err) {
       expect(err).to.not.be.undefined
       expect(err).to.be.an('array')
-      expect(err).to.lengthOf(output.QUANTITY_OF_REQUIRED_PROPERTIES)
+      expect(err).to.have.lengthOf(output.QUANTITY_OF_REQUIRED_PROPERTIES)
       err.forEach(error => {
         expect(error).to.be.an('object')
-        expect(error).to.have.keys([ 'message', 'path' ])
+        expect(error).to.have.property('message')
+        expect(error).to.have.property('path')
         expect(error.message).to.be.a('string')
         expect(error.path).to.be.a('string')
       })
@@ -43,7 +44,9 @@ describe('Create Expense Function - Validator Tests', () => {
     const validator = new Validator(input.Joi)
     const response = await validator.validate(input.valid)
     expect(response).to.be.an('object')
-    expect(response).to.have.keys([ 'category', 'description', 'amount' ])
+    expect(response).to.have.property('category')
+    expect(response).to.have.property('description')
+    expect(response).to.have.property('amount')
     expect(response.category).to.be.equal(input.valid.category)
     expect(response.description).to.be.equal(input.valid.description)
     expect(response.amount).to.be.equal(input.valid.amount)

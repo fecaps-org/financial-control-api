@@ -1,6 +1,7 @@
 'use strict'
 
 const { EVENT_TYPE } = require('config')
+const { transformStreamRecord } = require('transformers')
 const ExpenseReceived = require('./ExpenseReceived')
 const EXPENSE_NOTIFICATION_TOPIC_ARN = process.env.EXPENSE_NOTIFICATION_TOPIC_ARN
 
@@ -12,16 +13,8 @@ class ExpenseNotifier {
 
   defineRecords (event) {
     this.records = event.Records
-      .map(this._defineStreamRecord)
+      .map(transformStreamRecord)
       .filter(({ eventType }) => eventType === EVENT_TYPE)
-  }
-
-  _defineStreamRecord (record) {
-    const jsonData = Buffer
-      .from(record.kinesis.data, 'base64')
-      .toString()
-
-    return JSON.parse(jsonData)
   }
 
   async dispatchNotificationsAndRecords () {
@@ -33,10 +26,10 @@ class ExpenseNotifier {
         const request = this._defineNotificationRequest(record)
 
         const notifications = await this.notifierConnection.publish(request).promise()
-        result.notifications = { ...result.notifications, notifications }
+        result.notifications = [ ...result.notifications, notifications ]
 
         const streams = await this.expenseReceived.createReceivedRecord({ ...record })
-        result.streams = { ...result.streams, streams }
+        result.streams = [ ...result.streams, streams ]
       }
 
       return result

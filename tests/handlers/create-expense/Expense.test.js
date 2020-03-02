@@ -21,7 +21,8 @@ describe('Create Expense Function - Expense Tests', () => {
       expect(err).to.be.an('array')
       err.forEach(error => {
         expect(error).to.be.an('object')
-        expect(error).to.have.keys([ 'message', 'path' ])
+        expect(error).to.have.property('message')
+        expect(error).to.have.property('path')
         expect(error.message).to.be.a('string')
         expect(error.path).to.be.a('string')
       })
@@ -33,7 +34,8 @@ describe('Create Expense Function - Expense Tests', () => {
     const response = await expenseEvent.createExpense(input.valid)
 
     expect(response).to.be.an('object')
-    expect(response).to.have.keys([ 'ShardId', 'SequenceNumber' ])
+    expect(response).to.have.property('ShardId')
+    expect(response).to.have.property('SequenceNumber')
     expect(response.ShardId).to.be.a('string')
     expect(response.SequenceNumber).to.be.a('string')
   })

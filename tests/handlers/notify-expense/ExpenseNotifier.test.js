@@ -16,7 +16,8 @@ describe('Notify Expense Function - Expense Notifier Tests', () => {
 
     expect(response).to.not.be.undefined
     expect(response).to.be.an('object')
-    expect(response).to.have.keys([ 'notifications', 'streams' ])
+    expect(response).to.have.property('notifications')
+    expect(response).to.have.property('streams')
   })
 
   it('Expect to return empty when there\'s no ARN for Stream', async () => {
@@ -26,6 +27,7 @@ describe('Notify Expense Function - Expense Notifier Tests', () => {
 
     expect(response).to.not.be.undefined
     expect(response).to.be.an('object')
-    expect(response).to.have.keys([ 'notifications', 'streams' ])
+    expect(response).to.have.property('notifications')
+    expect(response).to.have.property('streams')
   })
 })

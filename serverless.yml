@@ -17,7 +17,10 @@ provider:
       rateLimit: ${env:THROTTLE_RATE_LIMIT}
   iamRoleStatements:
     - Effect: Allow
-      Action: dynamodb:scan
+      Action:
+        - dynamodb:scan
+        - dynamodb:query
+        - dynamodb:UpdateItem
       Resource: arn:aws:dynamodb:${env:REGION}:#{AWS::AccountId}:table/${env:EXPENSES_CATEGORIES_TABLE}
     - Effect: Allow
       Action: kinesis:PutRecord
@@ -31,10 +34,18 @@ plugins:
   - serverless-dotenv-plugin
 
 functions:
+  add-expense:
+    handler: src/handlers/add-expense.handler
+    description: Financial Control API - Add Expense
+    timeout: 300
+    events:
+      - stream:
+          arn: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
+
   create-expense:
     handler: src/handlers/create-expense.handler
     description: Financial Control API - Create Expense
-    timeout: 300
+    timeout: 30
     events:
       - http:
          path: expenses
@@ -43,7 +54,7 @@ functions:
   get-categories:
     handler: src/handlers/get-categories.handler
     description: Financial Control API - Get All Categories
-    timeout: 300
+    timeout: 30
     events:
       - http:
          path: categories
@@ -52,7 +63,7 @@ functions:
   get-expenses:
     handler: src/handlers/get-expenses.handler
     description: Financial Control API - Get All Expenses
-    timeout: 300
+    timeout: 30
     events:
       - http:
          path: expenses

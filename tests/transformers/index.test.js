@@ -5,7 +5,8 @@ const { expect } = require('chai')
 const {
   transformRequestBody,
   transformResponse,
-  transformErrors
+  transformErrors,
+  transformStreamRecord
 } = require('transformers')
 const { input, output } = require('../mocks/transform')
 
@@ -31,5 +32,12 @@ describe('Transform Tests', () => {
 
     expect(response).to.be.a('string')
     expect(response).to.be.equal(output.errors)
+  })
+
+  it('Expect to transform stream data', () => {
+    input.streams.forEach(stream => {
+      const response = transformStreamRecord(stream)
+      expect(response).to.be.an('object')
+    })
   })
 })
