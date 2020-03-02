@@ -10,16 +10,6 @@ describe('Get Categories Function - Categories Tests', () => {
 
   it('Expect to return error when injecting invalid DB instance', async () => {
     const categories = new Categories({})
-    categories.defineTableName(input.EXPENSES_CATEGORIES_TABLE)
-    const response = await categories.list()
-
-    expect(response).to.be.an('array')
-    expect(response).to.lengthOf(output.NO_DATA_LENGTH)
-  })
-
-  it('Expect to return error when setting wrong table name', async () => {
-    const categories = new Categories(input.db)
-    categories.defineTableName(input.INVALID_EXPENSES_CATEGORIES_TABLE)
     const response = await categories.list()
 
     expect(response).to.be.an('array')
@@ -28,7 +18,6 @@ describe('Get Categories Function - Categories Tests', () => {
 
   it('Expect to return success', async () => {
     const categories = new Categories(input.db)
-    categories.defineTableName(input.EXPENSES_CATEGORIES_TABLE)
     const response = await categories.list()
 
     expect(response).to.be.an('array')

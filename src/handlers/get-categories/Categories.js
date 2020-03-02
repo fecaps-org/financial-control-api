@@ -1,25 +1,27 @@
 'use strict'
 
+const { EXPENSES_CATEGORIES_TABLE } = require('config')
+
 class Categories {
   constructor (db) {
     this.db = db
   }
 
-  defineTableName (tableName) {
-    this.tableName = tableName
-  }
-
   async list () {
-    const categoriesRequest = {
-      TableName: this.tableName,
-      Limit: 10
-    }
+    const categoriesRequest = this._defineRequest()
 
     try {
       const result = await this.db.scan(categoriesRequest).promise()
       return result && result.Items || []
     } catch (err) {
       return []
+    }
+  }
+
+  _defineRequest () {
+    return {
+      TableName: EXPENSES_CATEGORIES_TABLE,
+      Limit: 10
     }
   }
 }
