@@ -78,6 +78,12 @@ $  cp .env.dist .env
 $ npm run seed
 ```
 
+## Architecture
+
+- Project architecture
+
+![Project Architecture](architecture/application_diagram.png)
+
 ## Debug
 
 ### Intellij IDEs
@@ -140,3 +146,10 @@ $ chmod +x ./build.sh && \
 ```bash
 $ FUNCTION_NAME=get-categories npm run invokeFunction
 ```
+
+## Next Steps
+
+- After having a Web APP for the application, setup AWS Cognito
+- Change Cloudwatch logs to ELK
+- Add X-Ray
+- Check functions permissions
