@@ -19,7 +19,7 @@ a WebHook in a personal project, see more [here](https://www.terraform.io/docs/p
 `repositoryAccessToken` in Terraform configurations. See more [here](https://github.com/settings/tokens)
 ---
 
-- Create `terraform.tfvars.dist` file and update it based on your needs:
+- Create `terraform.tfvars` file and update it based on your needs:
 
 ```bash
 $ cd infrastructure && \
@@ -36,19 +36,24 @@ terraform init && \
 terraform apply
 ``` 
 
+---
+
+- Stateful resources created:
+
+    - AWS Code Pipeline (with a GitHub WebHook)
+    - AWS Code Build
+    - AWS Dynamo DB
+    - AWS Kinesis Data Stream
+    - AWS SNS
+
 ## Continuous Delivery
 
-After running the Terraform command above, the CI/CD will be ready,
-as this command is responsible for creating these resources:
-
-- AWS Code Pipeline (with a GitHub WebHook)
-- AWS Code Build
-- AWS Dynamo DB
-- AWS Kinesis Data Stream
-- AWS SNS
+After running the Terraform command above, the CI/CD will be ready.
 
 With the CI/CD in place, all pushes to `master` will be
 automatically deployed.
+
+![CI/CD](architecture/ci_cd_diagram.png)
 
 ## Application Setup
 
@@ -79,8 +84,6 @@ $ npm run seed
 ```
 
 ## Architecture
-
-- Project architecture
 
 ![Project Architecture](architecture/application_diagram.png)
 
