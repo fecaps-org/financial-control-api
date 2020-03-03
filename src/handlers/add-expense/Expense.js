@@ -4,7 +4,7 @@ const { get, pick } = require('lodash')
 const { EXPENSES_CATEGORIES_TABLE, EVENT_RECEIVED_TYPE } = require('config')
 const { transformStreamRecord } = require('transformers')
 
-const EXPENSE_FIELDS = [ 'description', 'amount' ]
+const EXPENSE_FIELDS = [ 'description', 'amount', 'expenseId' ]
 
 class Expense {
   constructor (db, category) {

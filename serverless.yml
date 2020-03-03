@@ -15,23 +15,11 @@ provider:
     throttle:
       burstLimit: ${env:THROTTLE_BURST_LIMIT}
       rateLimit: ${env:THROTTLE_RATE_LIMIT}
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:scan
-        - dynamodb:query
-        - dynamodb:UpdateItem
-      Resource: arn:aws:dynamodb:${env:REGION}:#{AWS::AccountId}:table/${env:EXPENSES_CATEGORIES_TABLE}
-    - Effect: Allow
-      Action: kinesis:PutRecord
-      Resource: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
-    - Effect: Allow
-      Action: sns:Publish
-      Resource: arn:aws:sns:${env:REGION}:#{AWS::AccountId}:${env:EXPENSE_NOTIFICATION_TOPIC}
 
 plugins:
   - serverless-pseudo-parameters
   - serverless-dotenv-plugin
+  - serverless-iam-roles-per-function
 
 functions:
   add-expense:
@@ -41,6 +29,12 @@ functions:
     events:
       - stream:
           arn: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:query
+          - dynamodb:UpdateItem
+        Resource: arn:aws:dynamodb:${env:REGION}:#{AWS::AccountId}:table/${env:EXPENSES_CATEGORIES_TABLE}
 
   create-expense:
     handler: src/handlers/create-expense.handler
@@ -50,6 +44,10 @@ functions:
       - http:
          path: expenses
          method: post
+    iamRoleStatements:
+      - Effect: Allow
+        Action: kinesis:PutRecord
+        Resource: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
 
   get-categories:
     handler: src/handlers/get-categories.handler
@@ -59,6 +57,10 @@ functions:
       - http:
          path: categories
          method: get
+    iamRoleStatements:
+      - Effect: Allow
+        Action: dynamodb:scan
+        Resource: arn:aws:dynamodb:${env:REGION}:#{AWS::AccountId}:table/${env:EXPENSES_CATEGORIES_TABLE}
 
   get-expenses:
     handler: src/handlers/get-expenses.handler
@@ -78,6 +80,13 @@ functions:
           arn: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
     environment:
       EXPENSE_NOTIFICATION_TOPIC_ARN: arn:aws:sns:${env:REGION}:#{AWS::AccountId}:${env:EXPENSE_NOTIFICATION_TOPIC}
+    iamRoleStatements:
+      - Effect: Allow
+        Action: kinesis:PutRecord
+        Resource: arn:aws:kinesis:${env:REGION}:#{AWS::AccountId}:stream/${env:EXPENSES_STREAM}
+      - Effect: Allow
+        Action: sns:Publish
+        Resource: arn:aws:sns:${env:REGION}:#{AWS::AccountId}:${env:EXPENSE_NOTIFICATION_TOPIC}
 
 #resources:
 #  Resources:
